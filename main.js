@@ -1,156 +1,253 @@
-/* Dave Frehner — Fotografie & Reisen · V2 Dynamik */
+/* MONSNIX «Synapse» — interactions */
+(() => {
+  "use strict";
+  const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $  = (s, c=document) => c.querySelector(s);
+  const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+  const clamp = (v,a,b) => Math.min(b, Math.max(a, v));
 
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// ---------- Scroll-Fortschrittsbalken ----------
-const progressBar = document.querySelector('.scroll-progress span');
-
-// ---------- Header + Floating Hamburger ----------
-const header = document.querySelector('.site-header');
-const fab = document.querySelector('.fab-nav');
-let lastY = window.scrollY;
-
-function onScroll() {
-  const y = window.scrollY;
-
-  header.classList.toggle('scrolled', y > 40);
-  // Topnav ausblenden, sobald man in die Seite eintaucht
-  header.classList.toggle('hidden', y > 220);
-  // 3-Balken-Button oben rechts einblenden
-  if (fab) fab.classList.toggle('show', y > 220 || window.innerWidth <= 820);
-
-  if (progressBar) {
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    progressBar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-  }
-
-  // Parallax
-  if (!reduceMotion) {
-    document.querySelectorAll('.parallax-media').forEach(el => {
-      const r = el.parentElement.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < window.innerHeight) {
-        const shift = (r.top + r.height / 2 - window.innerHeight / 2) * -0.12;
-        el.style.transform = `translateY(${shift.toFixed(1)}px) scale(1.15)`;
-      }
-    });
-  }
-
-  lastY = y;
-}
-onScroll();
-window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', onScroll, { passive: true });
-
-// ---------- Fullscreen-Overlay-Menü ----------
-const mega = document.querySelector('.mega-menu');
-if (fab && mega) {
-  const setOpen = (open) => {
-    mega.classList.toggle('open', open);
-    fab.classList.toggle('open', open);
-    fab.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+  /* ---------- Scroll progress + header hide ---------- */
+  const progress = $(".progress span");
+  const top = $(".top");
+  let lastY = 0;
+  const onScrollUI = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    if (progress) progress.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + "%";
+    if (top) top.classList.toggle("hidden", scrollY > 140 && scrollY > lastY);
+    lastY = scrollY;
   };
-  fab.addEventListener('click', () => setOpen(!mega.classList.contains('open')));
-  mega.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && mega.classList.contains('open')) setOpen(false);
-  });
-}
+  addEventListener("scroll", onScrollUI, { passive:true }); onScrollUI();
 
-// ---------- Scroll-Reveal ----------
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  /* ---------- Neuron menu ---------- */
+  const fab = $(".fab"), neuro = $(".neuro");
+  const CONNECTIONS = [[0,1],[1,2],[2,3],[3,0],[1,3],[2,4],[3,4]];
+  let linesDrawn = false;
 
-// ---------- Zähler (Statistiken) ----------
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    counterObserver.unobserve(e.target);
-    const el = e.target;
-    const target = parseFloat(el.dataset.count);
-    const suffix = el.dataset.suffix || '';
-    const dur = 1600;
-    const t0 = performance.now();
-    const step = (t) => {
-      const p = Math.min((t - t0) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(step);
+  function drawLines(){
+    if (!neuro) return;
+    const svg = $("svg", neuro);
+    const nodes = $$(".n-node", neuro);
+    if (!svg || nodes.length < 2) return;
+    $$("line", svg).forEach(l => l.remove());
+    const R = neuro.getBoundingClientRect();
+    const c = nodes.map(n => {
+      const r = n.getBoundingClientRect();
+      const d = $(".n-dot", n).getBoundingClientRect();
+      return { x: d.left - R.left + d.width/2, y: d.top - R.top + d.height/2 };
+    });
+    CONNECTIONS.forEach(([a,b],i) => {
+      if (!c[a] || !c[b]) return;
+      const l = document.createElementNS("http://www.w3.org/2000/svg","line");
+      l.setAttribute("x1",c[a].x); l.setAttribute("y1",c[a].y);
+      l.setAttribute("x2",c[b].x); l.setAttribute("y2",c[b].y);
+      l.dataset.a = a; l.dataset.b = b;
+      const len = Math.hypot(c[b].x-c[a].x, c[b].y-c[a].y);
+      l.style.strokeDasharray = len;
+      l.style.strokeDashoffset = len;
+      l.style.transition = `stroke-dashoffset .9s ${.15 + i*.08}s cubic-bezier(.22,.9,.24,1), opacity .4s, stroke-width .4s`;
+      svg.appendChild(l);
+      requestAnimationFrame(() => requestAnimationFrame(() => { l.style.strokeDashoffset = 0; }));
+    });
+    linesDrawn = true;
+  }
+  function resetLines(){
+    if (!neuro) return;
+    $$("line", $("svg", neuro) || neuro).forEach(l => l.remove());
+    linesDrawn = false;
+  }
+  function toggleMenu(force){
+    const open = force !== undefined ? force : !document.body.classList.contains("menu-open");
+    document.body.classList.toggle("menu-open", open);
+    fab && fab.setAttribute("aria-expanded", open);
+    if (open) setTimeout(drawLines, 60); else setTimeout(resetLines, 550);
+    document.documentElement.style.overflow = open ? "hidden" : "";
+  }
+  fab && fab.addEventListener("click", () => toggleMenu());
+  addEventListener("keydown", e => { if (e.key === "Escape") toggleMenu(false); });
+  addEventListener("resize", () => { if (document.body.classList.contains("menu-open")) drawLines(); });
+  // hover: light up connected lines
+  $$(".n-node").forEach(node => {
+    node.addEventListener("mouseenter", () => {
+      const i = node.dataset.i;
+      $$(".neuro line").forEach(l => l.classList.toggle("lit", l.dataset.a === i || l.dataset.b === i));
+    });
+    node.addEventListener("mouseleave", () => $$(".neuro line.lit").forEach(l => l.classList.remove("lit")));
+    node.addEventListener("click", () => toggleMenu(false));
+  });
+
+  /* ---------- Reveal on scroll ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold:.12, rootMargin:"0px 0px -8% 0px" });
+  $$(".reveal").forEach(el => io.observe(el));
+
+  /* ---------- Parallax media ---------- */
+  const plx = $$("[data-parallax]");
+  const parallax = () => plx.forEach(el => {
+    const sp = parseFloat(el.dataset.parallax) || .12;
+    const r = el.parentElement.getBoundingClientRect();
+    const v = (r.top + r.height/2 - innerHeight/2) * sp;
+    el.style.transform = `translateY(${v.toFixed(1)}px) scale(1.12)`;
+  });
+  if (!RM && plx.length){ addEventListener("scroll", () => requestAnimationFrame(parallax), { passive:true }); parallax(); }
+
+  /* ---------- INTRO scrollytelling (lens) ---------- */
+  const intro = $(".intro");
+  if (intro && !RM){
+    const lens = $(".lens", intro);
+    const ticks = $(".ring-ticks", intro);
+    const grad  = $(".ring-grad", intro);
+    const img   = $(".lens-aperture img", intro);
+    const blades= $(".lens-blades", intro);
+    const read  = $(".lens-read b", intro);
+    const hint  = $(".intro-hint", intro);
+    const chapters = $$(".intro-chapter", intro);
+    const F = ["ƒ/16","ƒ/11","ƒ/8","ƒ/5.6","ƒ/4","ƒ/2.8","ƒ/2","ƒ/1.4"];
+    const windows = [[0,.2],[.24,.44],[.48,.68],[.74,1.01]];
+
+    const tick = () => {
+      const rect = intro.getBoundingClientRect();
+      const total = intro.offsetHeight - innerHeight;
+      const p = clamp(-rect.top / total, 0, 1);
+
+      // entrance: tilt -> flat (first 25%)
+      const e = clamp(p / .25, 0, 1);
+      const settle = 1 - Math.pow(1 - e, 3);
+      lens.style.transform =
+        `perspective(1100px) rotateX(${(1-settle)*22}deg) scale(${.86 + settle*.14}) rotateZ(${(1-settle)*-6}deg)`;
+
+      // rings rotate with scroll
+      ticks.style.transform = `rotate(${p*300}deg)`;
+      grad.style.transform  = `rotate(${-p*210}deg)`;
+
+      // aperture opens
+      const r = 9 + p * 37;                       // 9% -> 46%
+      img.style.clipPath = `circle(${r}% at 50% 50%)`;
+      img.style.transform = `scale(${1.45 - p*.45})`;
+      blades.style.opacity = String(clamp(.85 - p*1.1, 0, .85));
+      blades.style.transform = `rotate(${p*140}deg)`;
+
+      // finale: dim photo behind title
+      const dim = clamp((p - .68) / .32, 0, 1);
+      img.style.filter = `brightness(${(1 - dim*.55).toFixed(2)}) saturate(${(1 - dim*.25).toFixed(2)})`;
+
+      // f-stop readout
+      if (read) read.textContent = F[clamp(Math.floor(p * F.length), 0, F.length-1)];
+
+      // chapters
+      chapters.forEach((c,i) => {
+        const [a,b] = windows[i] || [2,3];
+        c.classList.toggle("active", p >= a && p < b);
+      });
+      if (hint) hint.style.opacity = String(clamp(1 - p*6, 0, 1));
     };
-    if (reduceMotion) { el.textContent = target + suffix; }
-    else requestAnimationFrame(step);
-  });
-}, { threshold: 0.6 });
-document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+    addEventListener("scroll", () => requestAnimationFrame(tick), { passive:true });
+    tick();
+  }
 
-// ---------- 3D-Tilt auf Karten ----------
-if (!reduceMotion && matchMedia('(hover: hover)').matches) {
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const rx = ((e.clientY - r.top) / r.height - 0.5) * -6;
-      const ry = ((e.clientX - r.left) / r.width - 0.5) * 6;
-      card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-6px)`;
+  /* ---------- Tilt cards ---------- */
+  if (!RM && matchMedia("(pointer:fine)").matches){
+    $$("[data-tilt]").forEach(card => {
+      let raf = 0;
+      card.addEventListener("pointermove", e => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left)/r.width - .5;
+          const y = (e.clientY - r.top)/r.height - .5;
+          card.style.transform = `perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateY(-4px)`;
+        });
+      });
+      card.addEventListener("pointerleave", () => {
+        cancelAnimationFrame(raf);
+        card.style.transition = "transform .7s cubic-bezier(.22,.9,.24,1)";
+        card.style.transform = "";
+        setTimeout(() => card.style.transition = "", 700);
+      });
     });
-    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-  });
-}
 
-// ---------- Galerie-Filter ----------
-const filterBtns = document.querySelectorAll('.filter-btn');
-const galleryItems = document.querySelectorAll('.gallery-item');
-filterBtns.forEach(btn => btn.addEventListener('click', () => {
-  filterBtns.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const f = btn.dataset.filter;
-  galleryItems.forEach(item => {
-    item.classList.toggle('hidden', f !== 'alle' && item.dataset.cat !== f);
-  });
-}));
+    /* ---------- Magnetic buttons ---------- */
+    $$(".btn, .fab").forEach(el => {
+      el.addEventListener("pointermove", e => {
+        const r = el.getBoundingClientRect();
+        el.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.18}px, ${(e.clientY-r.top-r.height/2)*.22}px)`;
+      });
+      el.addEventListener("pointerleave", () => el.style.transform = "");
+    });
 
-// ---------- Lightbox ----------
-const lightbox = document.querySelector('.lightbox');
-if (lightbox) {
-  const lbImg = lightbox.querySelector('img');
-  const lbCap = lightbox.querySelector('.lightbox-caption');
-  let current = 0;
-  const visibleItems = () => [...galleryItems].filter(i => !i.classList.contains('hidden'));
+    /* ---------- Cursor glow ---------- */
+    const glow = document.createElement("div");
+    glow.className = "cursor-glow";
+    document.body.appendChild(glow);
+    let gx=0, gy=0, tx=0, ty=0, shown=false;
+    addEventListener("pointermove", e => {
+      tx = e.clientX; ty = e.clientY;
+      if (!shown){ glow.style.opacity = ".9"; shown = true; }
+      const t = e.target.closest("a,button,.g-item,[data-tilt]");
+      glow.classList.toggle("big", !!t);
+    }, { passive:true });
+    (function loop(){
+      gx += (tx-gx)*.16; gy += (ty-gy)*.16;
+      glow.style.left = gx+"px"; glow.style.top = gy+"px";
+      requestAnimationFrame(loop);
+    })();
+  }
 
-  const show = (i) => {
-    const items = visibleItems();
-    current = (i + items.length) % items.length;
-    const item = items[current];
-    const img = item.querySelector('img');
-    lbImg.src = img.dataset.full || img.src;
-    lbImg.alt = img.alt;
-    lbCap.textContent = item.querySelector('.caption')?.textContent || '';
-  };
+  /* ---------- Gallery filters ---------- */
+  const fbtns = $$(".filter-btn");
+  if (fbtns.length){
+    fbtns.forEach(b => b.addEventListener("click", () => {
+      fbtns.forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+      const f = b.dataset.filter;
+      $$(".g-item").forEach(it => {
+        const show = f === "alle" || it.dataset.cat === f;
+        it.classList.toggle("hide", !show);
+      });
+    }));
+  }
 
-  galleryItems.forEach(item => item.addEventListener('click', () => {
-    lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    show(visibleItems().indexOf(item));
-  }));
+  /* ---------- Lightbox ---------- */
+  const lb = $(".lightbox");
+  if (lb){
+    const lbImg = $("img", lb), lbCap = $(".lb-cap", lb);
+    const openLb = fig => {
+      lbImg.src = $("img", fig).src;
+      lbCap.textContent = ($("figcaption", fig)?.textContent || "").trim();
+      lb.classList.add("open");
+      document.documentElement.style.overflow = "hidden";
+    };
+    const closeLb = () => { lb.classList.remove("open"); document.documentElement.style.overflow = ""; };
+    $$(".g-item").forEach(f => f.addEventListener("click", () => openLb(f)));
+    lb.addEventListener("click", e => { if (e.target === lb || e.target.closest(".lb-x")) closeLb(); });
+    addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
+  }
 
-  const close = () => {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-  };
-  lightbox.querySelector('.lightbox-close').addEventListener('click', close);
-  lightbox.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation(); show(current - 1); });
-  lightbox.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation(); show(current + 1); });
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
-  document.addEventListener('keydown', e => {
-    if (!lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') show(current - 1);
-    if (e.key === 'ArrowRight') show(current + 1);
-  });
-}
+  /* ---------- Intro deco stars ---------- */
+  const stars = $(".intro-stars");
+  if (stars){
+    for (let i=0;i<26;i++){
+      const s = document.createElement("i");
+      s.style.left = Math.random()*100+"%";
+      s.style.top = Math.random()*100+"%";
+      s.style.animationDelay = (Math.random()*5)+"s";
+      s.style.opacity = (.15+Math.random()*.5).toFixed(2);
+      stars.appendChild(s);
+    }
+  }
+
+  /* ---------- Neuro deco dots ---------- */
+  if (neuro){
+    const pos = [[12,14],[86,22],[14,80],[88,68],[48,8],[78,88]];
+    pos.forEach(([x,y],i) => {
+      const d = document.createElement("span");
+      d.className = "n-deco";
+      d.style.left = x+"%"; d.style.top = y+"%";
+      d.style.animationDelay = (i*.7)+"s";
+      neuro.appendChild(d);
+    });
+  }
+
+  /* ---------- Year ---------- */
+  $$("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
+})();

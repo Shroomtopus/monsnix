@@ -3,112 +3,86 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Galerie — Dave Frehner</title>
-<meta name="description" content="Ausgewählte Fotografien von unterwegs — nach Themen gefiltert.">
+<title>Galerie — Monsnix</title>
+<meta name="description" content="Ausgewählte Fotografien von unterwegs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<div class="progress" aria-hidden="true"><span></span></div>
 
-<button class="fab-nav" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mega-menu">
-  <span class="bars"><span></span><span></span><span></span></span>
+<header class="top">
+  <a class="brand" href="home.html"><span class="pulse"></span>Dave <em>Frehner</em></a>
+  <span class="tag">Fotografie · Reisen · Kunst</span>
+</header>
+
+<button class="fab" aria-label="Menü öffnen" aria-expanded="false" aria-controls="neuro-menu">
+  <span class="bars"><i></i><i></i></span>
 </button>
 
-<nav class="mega-menu" id="mega-menu" aria-label="Seitenmenü">
-  <div class="mega-inner">
-    <ul class="mega-links">
-      <li><a href="home.html"><span class="num">01</span>Start</a></li>
-      <li><a href="reisen.html"><span class="num">02</span>Reisen</a></li>
-      <li><a href="galerie.html" aria-current="page"><span class="num">03</span>Galerie</a></li>
-      <li><a href="ueber-mich.html"><span class="num">04</span>Über mich</a></li>
-      <li><a href="kontakt.html"><span class="num">05</span>Kontakt</a></li>
-    </ul>
-    <div class="mega-footer">Fotografie &amp; Reisen · Dave Frehner</div>
-  </div>
+<nav class="neuro" id="neuro-menu" aria-label="Hauptnavigation">
+  <svg aria-hidden="true">
+    <defs>
+      <linearGradient id="ngrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#43e0d0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <a class="n-node n0" data-i="0" href="home.html"><span class="n-dot"></span><span class="n-num">01</span><span class="n-label">Start</span></a>
+  <a class="n-node n1" data-i="1" href="reisen.html"><span class="n-dot"></span><span class="n-num">02</span><span class="n-label">Reisen</span></a>
+  <a class="n-node n2" data-i="2" href="galerie.html" aria-current="page"><span class="n-dot"></span><span class="n-num">03</span><span class="n-label">Galerie</span></a>
+  <a class="n-node n3" data-i="3" href="ueber-mich.html"><span class="n-dot"></span><span class="n-num">04</span><span class="n-label">Über mich</span></a>
+  <a class="n-node n4" data-i="4" href="kontakt.html"><span class="n-dot"></span><span class="n-num">05</span><span class="n-label">Kontakt</span></a>
+  <span class="n-foot">Monsnix · Synapse Nav</span>
 </nav>
-<header class="site-header">
-  <nav class="nav" aria-label="Hauptnavigation">
-    <a class="brand" href="home.html">Dave <em>Frehner</em></a>
-    <ul class="nav-links">
-      <li><a href="home.html">Start</a></li>
-      <li><a href="reisen.html">Reisen</a></li>
-      <li><a href="galerie.html" aria-current="page">Galerie</a></li>
-      <li><a href="ueber-mich.html">Über mich</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
-    </ul>
-  </nav>
-</header>
-<main>
 
+<main>
   <section class="page-hero">
-    <div class="hero-media"><img class="parallax-media" src="woman.jpg" alt="Künstlerisches Porträt" fetchpriority="high"></div>
-    <div class="hero-content">
+    <div class="ph-media"><img src="woman.jpg" alt="" data-parallax="0.1"></div>
+    <div class="container">
       <span class="kicker">Portfolio</span>
       <h1>Galerie</h1>
-      <p class="lead">Ausgewählte Bilder von unterwegs. Klick auf ein Foto öffnet die Grossansicht.</p>
+      <p class="lead" style="margin-top:1rem">Ausgewählte Bilder von unterwegs. Klick öffnet die Grossansicht.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="filter-bar reveal">
-        <button class="filter-btn active" type="button" data-filter="alle">Alle</button>
-        <button class="filter-btn" type="button" data-filter="natur">Natur</button>
-        <button class="filter-btn" type="button" data-filter="menschen">Menschen</button>
-        <button class="filter-btn" type="button" data-filter="kultur">Kultur</button>
-        <button class="filter-btn" type="button" data-filter="details">Details</button>
+        <button class="filter-btn active" data-filter="alle">Alle</button>
+        <button class="filter-btn" data-filter="natur">Natur</button>
+        <button class="filter-btn" data-filter="menschen">Menschen</button>
+        <button class="filter-btn" data-filter="kultur">Kultur</button>
+        <button class="filter-btn" data-filter="details">Details</button>
       </div>
       <div class="gallery-grid">
-        <figure class="gallery-item tall reveal" data-cat="menschen">
-          <img src="woman.jpg" alt="Künstlerisches Porträt in Schwarz und Gold" loading="lazy">
-          <figcaption class="caption">Porträt · Platzhalter</figcaption>
-        </figure>
-        <figure class="gallery-item reveal reveal-delay-1" data-cat="kultur">
-          <img src="colored-face.jpg" alt="Farbenprächtig bemaltes Gesicht" loading="lazy">
-          <figcaption class="caption">Farben · Platzhalter</figcaption>
-        </figure>
-        <figure class="gallery-item reveal reveal-delay-2" data-cat="natur">
-          <img src="vines.jpg" alt="Grüne Blätterwand" loading="lazy">
-          <figcaption class="caption">Natur · Platzhalter</figcaption>
-        </figure>
-        <figure class="gallery-item tall reveal" data-cat="natur">
-          <img src="swan.jpg" alt="Schwan auf dunklem Wasser" loading="lazy">
-          <figcaption class="caption">Tierwelt · Platzhalter</figcaption>
-        </figure>
-        <figure class="gallery-item reveal reveal-delay-1" data-cat="kultur">
-          <img src="face-art.jpg" alt="Dunkles Bodypainting mit Farbakzenten" loading="lazy">
-          <figcaption class="caption">Ausdruck · Platzhalter</figcaption>
-        </figure>
-        <figure class="gallery-item reveal reveal-delay-2" data-cat="menschen">
-          <img src="old-man.jpg" alt="Porträt eines älteren Mannes" loading="lazy">
-          <figcaption class="caption">Charakter · Platzhalter</figcaption>
-        </figure>
-        <figure class="gallery-item tall reveal reveal-delay-1" data-cat="details">
-          <img src="frame-img4.jpg" alt="Illustration eines Häuptlings" loading="lazy">
-          <figcaption class="caption">Kunst · Platzhalter</figcaption>
-        </figure>
+        <figure class="g-item reveal" data-cat="menschen"><img src="woman.jpg" alt="Porträt · Platzhalter" loading="lazy"><figcaption>Porträt · Platzhalter</figcaption></figure>
+<figure class="g-item reveal" data-cat="kultur"><img src="colored-face.jpg" alt="Farben · Platzhalter" loading="lazy"><figcaption>Farben · Platzhalter</figcaption></figure>
+<figure class="g-item reveal" data-cat="natur"><img src="vines.jpg" alt="Natur · Platzhalter" loading="lazy"><figcaption>Natur · Platzhalter</figcaption></figure>
+<figure class="g-item reveal" data-cat="natur"><img src="swan.jpg" alt="Tierwelt · Platzhalter" loading="lazy"><figcaption>Tierwelt · Platzhalter</figcaption></figure>
+<figure class="g-item reveal" data-cat="kultur"><img src="face-art.jpg" alt="Ausdruck · Platzhalter" loading="lazy"><figcaption>Ausdruck · Platzhalter</figcaption></figure>
+<figure class="g-item reveal" data-cat="menschen"><img src="old-man.jpg" alt="Charakter · Platzhalter" loading="lazy"><figcaption>Charakter · Platzhalter</figcaption></figure>
+<figure class="g-item reveal" data-cat="details"><img src="frame-img4.jpg" alt="Kunst · Platzhalter" loading="lazy"><figcaption>Kunst · Platzhalter</figcaption></figure>
       </div>
     </div>
   </section>
-
-  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Bild-Grossansicht">
-    <button class="lightbox-close" aria-label="Schliessen">✕</button>
-    <button class="lightbox-prev" aria-label="Vorheriges Bild">‹</button>
-    <img src="" alt="">
-    <button class="lightbox-next" aria-label="Nächstes Bild">›</button>
-    <span class="lightbox-caption"></span>
-  </div>
 </main>
-<footer class="site-footer">
+<div class="lightbox" role="dialog" aria-label="Grossansicht">
+  <button class="lb-x" aria-label="Schliessen">✕</button>
+  <img src="" alt="">
+  <span class="lb-cap"></span>
+</div>
+
+<footer class="footer">
   <div class="container">
+    <div class="giant" aria-hidden="true">MONSNIX</div>
     <div class="footer-grid">
-      <div>
-        <a class="brand" href="home.html">Dave <em>Frehner</em></a>
-        <p class="footer-tagline" style="margin-top:1rem">Fotografie- und Reiseblog. Geschichten und Bilder von unterwegs.</p>
+      <div style="max-width:22rem">
+        <a class="brand" href="home.html"><span class="pulse"></span>Dave <em>Frehner</em></a>
+        <p style="color:var(--mut);margin-top:1rem;font-size:.95rem">Fotografie- und Reisejournal. Geschichten und Bilder von unterwegs.</p>
       </div>
       <div>
         <h4>Seiten</h4>
@@ -120,20 +94,17 @@
         </ul>
       </div>
       <div>
-        <h4>Folge mir</h4>
-        <div class="socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.5.2-1.9.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.4-.3.8-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.5.3 1.9.2.5.4.8.7 1.1.3.3.6.5 1.1.7.4.1.8.3 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.5-.2 1.9-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.4.3-.8.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.5-.3-1.9-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.4-.1-.8-.3-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.2-2.9a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.6V8.4L15.8 12l-6.3 3.6z"/></svg></a>
-          <a href="mailto:frehner28@gmail.com" aria-label="E-Mail"><svg viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.7L3.2 6v12h17.6V6L12 12.7zM4.5 6l7.5 5.6L19.5 6h-15z"/></svg></a>
-        </div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:frehner28@gmail.com">frehner28@gmail.com</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Dave Frehner · Alle Rechte vorbehalten</span>
-      <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span>
-    </div>
+    <div class="fine"><span>© <b data-year>2026</b> Dave Frehner · Schweiz</span><span>Design «Synapse»</span></div>
   </div>
 </footer>
+
 <script src="main.js"></script>
 </body>
 </html>

@@ -3,141 +3,132 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reiseberichte — Dave Frehner</title>
+<title>Reiseberichte — Monsnix</title>
 <meta name="description" content="Alle Reiseberichte und Geschichten von unterwegs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<div class="progress" aria-hidden="true"><span></span></div>
 
-<button class="fab-nav" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mega-menu">
-  <span class="bars"><span></span><span></span><span></span></span>
+<header class="top">
+  <a class="brand" href="home.html"><span class="pulse"></span>Dave <em>Frehner</em></a>
+  <span class="tag">Fotografie · Reisen · Kunst</span>
+</header>
+
+<button class="fab" aria-label="Menü öffnen" aria-expanded="false" aria-controls="neuro-menu">
+  <span class="bars"><i></i><i></i></span>
 </button>
 
-<nav class="mega-menu" id="mega-menu" aria-label="Seitenmenü">
-  <div class="mega-inner">
-    <ul class="mega-links">
-      <li><a href="home.html"><span class="num">01</span>Start</a></li>
-      <li><a href="reisen.html" aria-current="page"><span class="num">02</span>Reisen</a></li>
-      <li><a href="galerie.html"><span class="num">03</span>Galerie</a></li>
-      <li><a href="ueber-mich.html"><span class="num">04</span>Über mich</a></li>
-      <li><a href="kontakt.html"><span class="num">05</span>Kontakt</a></li>
-    </ul>
-    <div class="mega-footer">Fotografie &amp; Reisen · Dave Frehner</div>
-  </div>
+<nav class="neuro" id="neuro-menu" aria-label="Hauptnavigation">
+  <svg aria-hidden="true">
+    <defs>
+      <linearGradient id="ngrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#43e0d0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <a class="n-node n0" data-i="0" href="home.html"><span class="n-dot"></span><span class="n-num">01</span><span class="n-label">Start</span></a>
+  <a class="n-node n1" data-i="1" href="reisen.html" aria-current="page"><span class="n-dot"></span><span class="n-num">02</span><span class="n-label">Reisen</span></a>
+  <a class="n-node n2" data-i="2" href="galerie.html"><span class="n-dot"></span><span class="n-num">03</span><span class="n-label">Galerie</span></a>
+  <a class="n-node n3" data-i="3" href="ueber-mich.html"><span class="n-dot"></span><span class="n-num">04</span><span class="n-label">Über mich</span></a>
+  <a class="n-node n4" data-i="4" href="kontakt.html"><span class="n-dot"></span><span class="n-num">05</span><span class="n-label">Kontakt</span></a>
+  <span class="n-foot">Monsnix · Synapse Nav</span>
 </nav>
-<header class="site-header">
-  <nav class="nav" aria-label="Hauptnavigation">
-    <a class="brand" href="home.html">Dave <em>Frehner</em></a>
-    <ul class="nav-links">
-      <li><a href="home.html">Start</a></li>
-      <li><a href="reisen.html" aria-current="page">Reisen</a></li>
-      <li><a href="galerie.html">Galerie</a></li>
-      <li><a href="ueber-mich.html">Über mich</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
-    </ul>
-  </nav>
-</header>
-<main>
 
+<main>
   <section class="page-hero">
-    <div class="hero-media"><img class="parallax-media" src="vines.jpg" alt="Grüne Blätterwand" fetchpriority="high"></div>
-    <div class="hero-content">
+    <div class="ph-media"><img src="vines.jpg" alt="" data-parallax="0.1"></div>
+    <div class="container">
       <span class="kicker">Der Blog</span>
       <h1>Reiseberichte</h1>
-      <p class="lead">Geschichten, Routen und Eindrücke — chronologisch, ehrlich, mit vielen Bildern.</p>
+      <p class="lead" style="margin-top:1rem">Geschichten, Routen und Eindrücke — chronologisch, ehrlich, mit vielen Bildern.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="card-grid">
-        <article class="card reveal">
-          <div class="card-media">
-            <span class="card-tag">Natur</span>
-            <img src="vines.jpg" alt="Grüne Blätterwand" loading="lazy">
-          </div>
+        <article class="card reveal" data-tilt>
+          <div class="card-media"><span class="card-tag">Natur</span><img src="vines.jpg" alt="Grüne Wildnis: Unterwegs im Regenwald" loading="lazy"></div>
           <div class="card-body">
             <span class="card-meta">Juni 2026 · Beispielbericht</span>
-            <h3><a class="card-link-overlay" href="reise-artikel.html">Grüne Wildnis: Unterwegs im Regenwald</a></h3>
-            <p>Platzhalter-Teaser: Hier steht die Einleitung Deines Reiseberichts — zwei, drei Sätze, die Lust auf mehr machen.</p>
+            <h3>Grüne Wildnis: Unterwegs im Regenwald</h3>
+            <p>Platzhalter-Teaser: Hier steht die Einleitung Deines Reiseberichts.</p>
             <span class="card-link">Weiterlesen →</span>
           </div>
+          <a class="overlay-link" href="reise-artikel.html" aria-label="Grüne Wildnis: Unterwegs im Regenwald lesen"></a>
         </article>
-        <article class="card reveal reveal-delay-1">
-          <div class="card-media">
-            <span class="card-tag">Tierwelt</span>
-            <img src="swan.jpg" alt="Schwan im Gegenlicht" loading="lazy">
-          </div>
+
+        <article class="card reveal reveal-d1" data-tilt>
+          <div class="card-media"><span class="card-tag">Tierwelt</span><img src="swan.jpg" alt="Stille Morgen am See" loading="lazy"></div>
           <div class="card-body">
             <span class="card-meta">Mai 2026 · Beispielbericht</span>
-            <h3><a class="card-link-overlay" href="reise-artikel.html">Stille Morgen am See</a></h3>
-            <p>Platzhalter-Teaser: Kurzer Anriss des Berichts. Die ganze Karte ist klickbar.</p>
+            <h3>Stille Morgen am See</h3>
+            <p>Platzhalter-Teaser: Kurzer Anriss des Berichts.</p>
             <span class="card-link">Weiterlesen →</span>
           </div>
+          <a class="overlay-link" href="reise-artikel.html" aria-label="Stille Morgen am See lesen"></a>
         </article>
-        <article class="card reveal reveal-delay-2">
-          <div class="card-media">
-            <span class="card-tag">Menschen</span>
-            <img src="old-man.jpg" alt="Porträt eines älteren Mannes" loading="lazy">
-          </div>
+
+        <article class="card reveal reveal-d2" data-tilt>
+          <div class="card-media"><span class="card-tag">Menschen</span><img src="old-man.jpg" alt="Gesichter einer Reise" loading="lazy"></div>
           <div class="card-body">
             <span class="card-meta">April 2026 · Beispielbericht</span>
-            <h3><a class="card-link-overlay" href="reise-artikel.html">Gesichter einer Reise</a></h3>
+            <h3>Gesichter einer Reise</h3>
             <p>Platzhalter-Teaser: Begegnungen unterwegs — die Menschen hinter den Orten.</p>
             <span class="card-link">Weiterlesen →</span>
           </div>
+          <a class="overlay-link" href="reise-artikel.html" aria-label="Gesichter einer Reise lesen"></a>
         </article>
-        <article class="card reveal">
-          <div class="card-media">
-            <span class="card-tag">Kultur</span>
-            <img src="colored-face.jpg" alt="Farbenprächtig bemaltes Gesicht" loading="lazy">
-          </div>
+
+        <article class="card reveal" data-tilt>
+          <div class="card-media"><span class="card-tag">Kultur</span><img src="colored-face.jpg" alt="Farben eines Festivals" loading="lazy"></div>
           <div class="card-body">
             <span class="card-meta">März 2026 · Beispielbericht</span>
-            <h3><a class="card-link-overlay" href="reise-artikel.html">Farben eines Festivals</a></h3>
-            <p>Platzhalter-Teaser: Ein Fest der Farben — Notizen und Bilder von einem Festival unterwegs.</p>
+            <h3>Farben eines Festivals</h3>
+            <p>Platzhalter-Teaser: Ein Fest der Farben — Notizen von einem Festival.</p>
             <span class="card-link">Weiterlesen →</span>
           </div>
+          <a class="overlay-link" href="reise-artikel.html" aria-label="Farben eines Festivals lesen"></a>
         </article>
-        <article class="card reveal reveal-delay-1">
-          <div class="card-media">
-            <span class="card-tag">Menschen</span>
-            <img src="woman.jpg" alt="Künstlerisches Porträt" loading="lazy">
-          </div>
+
+        <article class="card reveal reveal-d1" data-tilt>
+          <div class="card-media"><span class="card-tag">Kunst</span><img src="woman.jpg" alt="Zwischen Licht und Schatten" loading="lazy"></div>
           <div class="card-body">
             <span class="card-meta">Februar 2026 · Beispielbericht</span>
-            <h3><a class="card-link-overlay" href="reise-artikel.html">Porträts bei Nacht</a></h3>
-            <p>Platzhalter-Teaser: Was Dunkelheit mit Bildern macht — ein fotografisches Experiment.</p>
+            <h3>Zwischen Licht und Schatten</h3>
+            <p>Platzhalter-Teaser: Ein fotografisches Experiment unterwegs.</p>
             <span class="card-link">Weiterlesen →</span>
           </div>
+          <a class="overlay-link" href="reise-artikel.html" aria-label="Zwischen Licht und Schatten lesen"></a>
         </article>
-        <article class="card reveal reveal-delay-2">
-          <div class="card-media">
-            <span class="card-tag">Hinter den Kulissen</span>
-            <img src="face-art.jpg" alt="Dunkles Bodypainting mit Farbakzenten" loading="lazy">
-          </div>
+
+        <article class="card reveal reveal-d2" data-tilt>
+          <div class="card-media"><span class="card-tag">Details</span><img src="frame-img4.jpg" alt="Skizzen aus der Ferne" loading="lazy"></div>
           <div class="card-body">
             <span class="card-meta">Januar 2026 · Beispielbericht</span>
-            <h3><a class="card-link-overlay" href="reise-artikel.html">Was in meiner Fototasche steckt</a></h3>
-            <p>Platzhalter-Teaser: Ausrüstung, Routinen und was sich unterwegs wirklich bewährt hat.</p>
+            <h3>Skizzen aus der Ferne</h3>
+            <p>Platzhalter-Teaser: Kleine Beobachtungen am Wegesrand.</p>
             <span class="card-link">Weiterlesen →</span>
           </div>
+          <a class="overlay-link" href="reise-artikel.html" aria-label="Skizzen aus der Ferne lesen"></a>
         </article>
       </div>
     </div>
   </section>
 </main>
-<footer class="site-footer">
+
+<footer class="footer">
   <div class="container">
+    <div class="giant" aria-hidden="true">MONSNIX</div>
     <div class="footer-grid">
-      <div>
-        <a class="brand" href="home.html">Dave <em>Frehner</em></a>
-        <p class="footer-tagline" style="margin-top:1rem">Fotografie- und Reiseblog. Geschichten und Bilder von unterwegs.</p>
+      <div style="max-width:22rem">
+        <a class="brand" href="home.html"><span class="pulse"></span>Dave <em>Frehner</em></a>
+        <p style="color:var(--mut);margin-top:1rem;font-size:.95rem">Fotografie- und Reisejournal. Geschichten und Bilder von unterwegs.</p>
       </div>
       <div>
         <h4>Seiten</h4>
@@ -149,20 +140,17 @@
         </ul>
       </div>
       <div>
-        <h4>Folge mir</h4>
-        <div class="socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.5.2-1.9.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.4-.3.8-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.5.3 1.9.2.5.4.8.7 1.1.3.3.6.5 1.1.7.4.1.8.3 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.5-.2 1.9-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.4.3-.8.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.5-.3-1.9-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.4-.1-.8-.3-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.2-2.9a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.6V8.4L15.8 12l-6.3 3.6z"/></svg></a>
-          <a href="mailto:frehner28@gmail.com" aria-label="E-Mail"><svg viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.7L3.2 6v12h17.6V6L12 12.7zM4.5 6l7.5 5.6L19.5 6h-15z"/></svg></a>
-        </div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:frehner28@gmail.com">frehner28@gmail.com</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Dave Frehner · Alle Rechte vorbehalten</span>
-      <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span>
-    </div>
+    <div class="fine"><span>© <b data-year>2026</b> Dave Frehner · Schweiz</span><span>Design «Synapse»</span></div>
   </div>
 </footer>
+
 <script src="main.js"></script>
 </body>
 </html>

@@ -3,77 +3,57 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dave Frehner — Fotografie &amp; Reisen</title>
+<title>Monsnix — Dave Frehner · Fotografie &amp; Reisen</title>
 <meta name="description" content="Die neue Foto- und Reise-Seite von Dave Frehner entsteht. Bald hier.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0b0b0d; --text:#f4f2ee; --muted:#a5a1a0;
-    --grad:linear-gradient(100deg,#ff9a62,#ff7d8a 35%,#8aa0ff 70%,#7bdff2);
-  }
+  :root{--bg:#06080b;--ink:#f2efe9;--mut:#8b94a7;--vio:#7c5cff;--cya:#43e0d0;
+    --grad:linear-gradient(115deg,#7c5cff,#43e0d0)}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
-  body{
-    background:var(--bg); color:var(--text);
-    font-family:"Inter",system-ui,sans-serif;
-    min-height:100dvh; display:flex; align-items:center; justify-content:center;
-    padding:2rem; overflow:hidden; position:relative;
-  }
-  body::before{
-    content:""; position:absolute; inset:-30%; z-index:0;
-    background:
-      radial-gradient(40% 40% at 25% 30%, rgba(255,140,90,.18), transparent 70%),
-      radial-gradient(45% 45% at 75% 70%, rgba(120,160,255,.16), transparent 70%),
-      radial-gradient(35% 35% at 60% 25%, rgba(123,223,242,.10), transparent 70%);
-    filter:blur(10px);
-    animation:drift 18s ease-in-out infinite alternate;
-  }
-  @keyframes drift{from{transform:translate3d(-2%, -1%,0) scale(1)}to{transform:translate3d(2%,2%,0) scale(1.08)}}
-  .wrap{position:relative; z-index:1; text-align:center; max-width:44rem}
-  .brand{
-    font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem;
-    letter-spacing:.01em; margin-bottom:2.5rem;
-  }
-  .brand em{font-style:italic; font-weight:500;
-    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .badge{
-    display:inline-flex; align-items:center; gap:.5rem;
-    font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
-    color:var(--muted); border:1px solid rgba(255,255,255,.14);
-    padding:.5rem 1rem; border-radius:999px; margin-bottom:2rem;
-  }
-  .badge .dot{width:.5rem; height:.5rem; border-radius:50%;
-    background:linear-gradient(90deg,#ff8a5b,#7bdff2); box-shadow:0 0 12px rgba(255,140,90,.7)}
-  h1{
-    font-family:"Fraunces",serif; font-weight:600; line-height:1.02;
-    font-size:clamp(2.6rem,8vw,5rem); letter-spacing:-.01em; margin-bottom:1.4rem;
-  }
-  h1 .g{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
-  p.lead{
-    color:var(--muted); font-size:clamp(1rem,2.4vw,1.2rem); line-height:1.6;
-    max-width:34rem; margin:0 auto 2.4rem;
-  }
-  .contact{
-    display:inline-block; color:var(--text); text-decoration:none;
-    font-size:.95rem; border-bottom:1px solid rgba(255,255,255,.35);
-    padding-bottom:2px; transition:border-color .2s,color .2s;
-  }
-  .contact:hover{color:#fff; border-color:#fff}
-  .foot{margin-top:3rem; font-size:.8rem; color:rgba(165,161,160,.6)}
+  body{background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;
+    min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:2rem;
+    overflow:hidden;position:relative;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:absolute;inset:-30%;z-index:0;
+    background:radial-gradient(40% 40% at 25% 30%,rgba(124,92,255,.20),transparent 70%),
+      radial-gradient(45% 45% at 75% 70%,rgba(67,224,208,.16),transparent 70%);
+    filter:blur(10px);animation:drift 18s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translate3d(-2%,-1%,0) scale(1)}to{transform:translate3d(2%,2%,0) scale(1.08)}}
+  body::after{content:"";position:fixed;inset:-50%;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+  .wrap{position:relative;z-index:1;text-align:center;max-width:44rem}
+  .brand{font-family:"Syne",sans-serif;font-weight:700;font-size:1.4rem;margin-bottom:2.5rem;
+    display:inline-flex;align-items:center;gap:.7rem}
+  .brand .dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--grad);
+    box-shadow:0 0 14px rgba(124,92,255,.9);animation:pul 2.6s ease-in-out infinite}
+  @keyframes pul{0%,100%{transform:scale(1)}50%{transform:scale(.55)}}
+  .brand em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .badge{display:inline-flex;align-items:center;gap:.6rem;font-family:"Space Mono",monospace;
+    font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);
+    border:1px solid rgba(242,239,233,.14);padding:.55rem 1.1rem;border-radius:999px;margin-bottom:2.2rem}
+  h1{font-family:"Syne",sans-serif;font-weight:800;line-height:1;letter-spacing:-.01em;
+    font-size:clamp(2.8rem,9vw,5.6rem);margin-bottom:1.4rem}
+  h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  p.lead{color:var(--mut);font-size:clamp(1rem,2.4vw,1.15rem);line-height:1.65;max-width:33rem;margin:0 auto 2.4rem}
+  .contact{display:inline-block;color:var(--ink);text-decoration:none;font-size:.95rem;
+    border-bottom:1px solid rgba(242,239,233,.35);padding-bottom:2px;transition:all .25s}
+  .contact:hover{color:var(--cya);border-color:var(--cya)}
+  .foot{margin-top:3rem;font-family:"Space Mono",monospace;font-size:.6rem;letter-spacing:.26em;
+    text-transform:uppercase;color:rgba(139,148,167,.6)}
 </style>
 </head>
 <body>
   <main class="wrap">
-    <div class="brand">Dave <em>Frehner</em></div>
-    <span class="badge"><span class="dot"></span>Fotografie &amp; Reiseblog</span>
+    <div class="brand"><span class="dot"></span>Dave <em>Frehner</em></div><br>
+    <span class="badge">Fotografie &amp; Reisejournal</span>
     <h1>Bald <span class="g">hier</span>.</h1>
     <p class="lead">Meine neue Seite für Fotografie und Reisen ist im Aufbau —
       Geschichten, Bilder und Eindrücke von unterwegs. Schau bald wieder vorbei.</p>
     <a class="contact" href="mailto:frehner28@gmail.com">frehner28@gmail.com</a>
-    <div class="foot">© Dave Frehner · Schweiz</div>
+    <div class="foot">© Dave Frehner · Schweiz · Monsnix</div>
   </main>
 </body>
 </html>
