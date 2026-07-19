@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Monsnix — Reiseberichte</title>
+  <link>https://monsnix.com/reisen.html</link>
+  <description>Reisejournal von Dave Frehner: Geschichten von unterwegs, Sommer wie Winter.</description>
+  <language>de-ch</language>
+  <item>
+    <title>Grüne Wildnis: Unterwegs im Regenwald (Beispiel)</title>
+    <link>https://monsnix.com/reise-artikel.html</link>
+    <pubDate>Mon, 15 Jun 2026 08:00:00 GMT</pubDate>
+    <description>Platzhalter-Bericht — wird mit dem ersten echten Reisebericht ersetzt.</description>
+  </item>
+</channel>
+</rss>

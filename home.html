@@ -3,11 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Monsnix — Dave Frehner · Fotografie &amp; Reisen</title>
-<meta name="description" content="Fotografie- und Reisejournal von Dave Frehner. Die Welt sehen, Momente festhalten.">
+<title>Monsnix — Reisejournal von Dave Frehner</title>
+<meta name="description" content="Reisejournal von Dave Frehner: Geschichten von unterwegs, Sommer wie Winter — und die Bilder dazu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://monsnix.com/home.html">
+<link rel="alternate" type="application/rss+xml" title="Monsnix Reiseberichte" href="https://monsnix.com/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Monsnix">
+<meta property="og:title" content="Monsnix — Reisejournal von Dave Frehner">
+<meta property="og:description" content="Reisejournal von Dave Frehner: Geschichten von unterwegs, Sommer wie Winter — und die Bilder dazu.">
+<meta property="og:url" content="https://monsnix.com/home.html">
+<meta property="og:image" content="https://monsnix.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Monsnix — Reisejournal von Dave Frehner">
+<meta name="twitter:description" content="Reisejournal von Dave Frehner: Geschichten von unterwegs, Sommer wie Winter — und die Bilder dazu.">
+<meta name="twitter:image" content="https://monsnix.com/og-image.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +34,7 @@
 
 <header class="top">
   <a class="brand" href="home.html"><span class="pulse"></span>Dave <em>Frehner</em></a>
-  <span class="tag">Fotografie · Reisen · Kunst</span>
+  <span class="tag">Reisejournal · Fotografie</span>
 </header>
 
 <button class="fab" aria-label="Menü öffnen" aria-expanded="false" aria-controls="neuro-menu">
@@ -76,8 +92,8 @@
         <div class="big">Mons<span class="grad-text">nix</span></div>
         <p>Fotografie- &amp; Reisejournal von Dave Frehner</p>
         <div class="actions">
-          <a class="btn btn-primary" href="galerie.html">Zur Galerie <span class="arrow">→</span></a>
-          <a class="btn btn-ghost" href="reisen.html">Reiseberichte</a>
+          <a class="btn btn-primary" href="reisen.html">Reiseberichte lesen <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="galerie.html">Zur Galerie</a>
         </div>
       </div>
 
@@ -93,31 +109,48 @@
     </div>
   </div>
 
+  <!-- ======= Featured Bericht ======= -->
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="kicker">Neuster Bericht</span>
+          <h2>Zuletzt <span class="grad-text">unterwegs</span></h2>
+        </div>
+      </div>
+      <article class="feat reveal">
+        <div class="feat-media"><img src="vines.jpg" alt="Grüne Blätterwand im Regenwald" loading="lazy"></div>
+        <div class="feat-body">
+          <div class="chips">
+            <span class="chip chip-loc">◎ Südamerika</span>
+            <span class="chip">Juni 2026</span>
+            <span class="chip">≈ 6 Min</span>
+            <span class="chip">Beispiel</span>
+          </div>
+          <h3>Grüne Wildnis: Unterwegs im Regenwald</h3>
+          <p>Platzhalter-Teaser: Hier steht die Einleitung Deines neusten Reiseberichts — zwei, drei Sätze, die mitten in die Geschichte ziehen.</p>
+          <span class="card-link">Ganzen Bericht lesen →</span>
+        </div>
+        <a class="overlay-link" href="reise-artikel.html" aria-label="Neusten Bericht lesen"></a>
+      </article>
+    </div>
+  </section>
+
   <!-- ======= Neueste Reiseberichte ======= -->
   <section class="section">
     <div class="container">
       <div class="section-head reveal">
         <div>
           <span class="kicker">Unterwegs</span>
-          <h2>Neueste <span class="grad-text">Reiseberichte</span></h2>
+          <h2>Weitere <span class="grad-text">Berichte</span></h2>
         </div>
         <a class="btn btn-ghost" href="reisen.html">Alle Berichte <span class="arrow">→</span></a>
       </div>
       <div class="card-grid">
-        <article class="card reveal" data-tilt>
-          <div class="card-media"><span class="card-tag">Natur</span><img src="vines.jpg" alt="Grüne Blätterwand" loading="lazy"></div>
-          <div class="card-body">
-            <span class="card-meta">Juni 2026 · Beispielbericht</span>
-            <h3>Grüne Wildnis: Unterwegs im Regenwald</h3>
-            <p>Platzhalter-Teaser: Hier steht später die Einleitung Deines Reiseberichts.</p>
-            <span class="card-link">Weiterlesen →</span>
-          </div>
-          <a class="overlay-link" href="reise-artikel.html" aria-label="Grüne Wildnis lesen"></a>
-        </article>
         <article class="card reveal reveal-d1" data-tilt>
-          <div class="card-media"><span class="card-tag">Tierwelt</span><img src="swan.jpg" alt="Schwan im Gegenlicht" loading="lazy"></div>
+          <div class="card-media"><span class="card-tag">◎ Schweiz</span><img src="swan.jpg" alt="Schwan im Gegenlicht" loading="lazy"></div>
           <div class="card-body">
-            <span class="card-meta">Mai 2026 · Beispielbericht</span>
+            <span class="card-meta">Mai 2026 · ≈ 4 Min · Beispiel</span>
             <h3>Stille Morgen am See</h3>
             <p>Platzhalter-Teaser: Kurzer Anriss des Berichts — die ganze Karte ist klickbar.</p>
             <span class="card-link">Weiterlesen →</span>
@@ -125,9 +158,9 @@
           <a class="overlay-link" href="reise-artikel.html" aria-label="Stille Morgen lesen"></a>
         </article>
         <article class="card reveal reveal-d2" data-tilt>
-          <div class="card-media"><span class="card-tag">Menschen</span><img src="old-man.jpg" alt="Porträt eines älteren Mannes" loading="lazy"></div>
+          <div class="card-media"><span class="card-tag">◎ Marokko</span><img src="old-man.jpg" alt="Porträt eines älteren Mannes" loading="lazy"></div>
           <div class="card-body">
-            <span class="card-meta">April 2026 · Beispielbericht</span>
+            <span class="card-meta">April 2026 · ≈ 5 Min · Beispiel</span>
             <h3>Gesichter einer Reise</h3>
             <p>Platzhalter-Teaser: Begegnungen unterwegs — die Menschen hinter den Orten.</p>
             <span class="card-link">Weiterlesen →</span>
@@ -143,24 +176,24 @@
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <span class="kicker">Bildbearbeitung</span>
-          <h2>Vorher / <span class="grad-text">Nachher</span></h2>
+          <span class="kicker">Gleicher Ort, zwei Gesichter</span>
+          <h2>Sommer ⁄ <span class="grad-text">Winter</span></h2>
         </div>
-        <p class="lead" style="max-width:24rem">Ziehe den Regler — aus dem rohen Moment wird das fertige Bild.</p>
+        <p class="lead" style="max-width:24rem">Der Winter friert die Natur ein. Zieh den Regler — derselbe Ort, im Schneemantel. (Platzhalter, bald mit echtem Foto-Paar.)</p>
       </div>
       <div class="ba reveal" data-ba>
-        <div class="ba-after"><img src="colored-face.jpg" alt="Nachher — bearbeitet"></div>
-        <div class="ba-before"><img src="colored-face.jpg" alt="Vorher — unbearbeitet"></div>
+        <div class="ba-after"><img src="vines.jpg" alt="Winter — derselbe Ort im Schneemantel"></div>
+        <div class="ba-before"><img src="vines.jpg" alt="Sommer — voller Leben"></div>
         <div class="ba-handle"><span class="ba-knob">⇆</span></div>
-        <span class="ba-tag ba-tag-l">Vorher · RAW</span>
-        <span class="ba-tag ba-tag-r">Nachher · Edit</span>
+        <span class="ba-tag ba-tag-l">Sommer</span>
+        <span class="ba-tag ba-tag-r">Winter ❄</span>
       </div>
     </div>
   </section>
 
   <!-- ======= Video-Band (bewegte Bilder) ======= -->
   <section class="band" aria-label="Bewegte Momente">
-    <video autoplay muted loop playsinline poster="swan.jpg" data-parallax="0.06">
+    <video autoplay muted loop playsinline preload="none" poster="swan.jpg" data-parallax="0.06">
       <source src="hero.mp4" type="video/mp4">
     </video>
     <div class="band-inner reveal">
@@ -200,10 +233,10 @@
         <span class="kicker">Hinter der Kamera</span>
         <h2>Fotograf aus <span class="grad-text">Leidenschaft</span>, Reisender aus Neugier</h2>
         <p class="lead">Platzhalter: In zwei, drei Sätzen, wer Du bist und warum es diese Seite gibt.</p>
-        <div class="stats">
-          <div class="stat"><span class="num">24</span><span class="label">Länder</span></div>
-          <div class="stat"><span class="num">120+</span><span class="label">Berichte</span></div>
-          <div class="stat"><span class="num">8k</span><span class="label">Fotos</span></div>
+        <div class="chips" style="margin-top:2rem">
+          <span class="chip chip-loc">◎ Schweiz</span>
+          <span class="chip">Sommer ⁄ Winter</span>
+          <span class="chip">Kamera immer dabei</span>
         </div>
         <p style="margin-top:2rem"><a class="btn btn-primary" href="ueber-mich.html">Mehr über mich <span class="arrow">→</span></a></p>
       </div>
@@ -218,7 +251,7 @@
     <div class="footer-grid">
       <div style="max-width:22rem">
         <a class="brand" href="home.html"><span class="pulse"></span>Dave <em>Frehner</em></a>
-        <p style="color:var(--mut);margin-top:1rem;font-size:.95rem">Fotografie- und Reisejournal. Geschichten und Bilder von unterwegs.</p>
+        <p style="color:var(--mut);margin-top:1rem;font-size:.95rem">Reisejournal von Dave Frehner. Geschichten von unterwegs — und die Bilder dazu.</p>
       </div>
       <div>
         <h4>Seiten</h4>

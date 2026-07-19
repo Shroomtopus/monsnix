@@ -352,3 +352,11 @@
   ba.addEventListener("pointermove", e => down && set(e.clientX));
   addEventListener("pointerup", () => down = false);
 })();
+
+
+/* ============ v2.4: Kontakt-Formular Erfolgsmeldung ============ */
+(() => {
+  if (location.search.indexOf("sent=1") === -1) return;
+  const ok = document.querySelector(".form-ok");
+  if (ok){ ok.hidden = false; setTimeout(() => ok.scrollIntoView({ block:"center", behavior:"smooth" }), 300); }
+})();

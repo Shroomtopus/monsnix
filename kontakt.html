@@ -8,6 +8,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://monsnix.com/kontakt.html">
+<link rel="alternate" type="application/rss+xml" title="Monsnix Reiseberichte" href="https://monsnix.com/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Monsnix">
+<meta property="og:title" content="Kontakt — Monsnix">
+<meta property="og:description" content="Schreib mir — Fragen zu Reisen, Feedback zum Journal oder Interesse an einem Bild.">
+<meta property="og:url" content="https://monsnix.com/kontakt.html">
+<meta property="og:image" content="https://monsnix.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kontakt — Monsnix">
+<meta name="twitter:description" content="Schreib mir — Fragen zu Reisen, Feedback zum Journal oder Interesse an einem Bild.">
+<meta name="twitter:image" content="https://monsnix.com/og-image.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +34,7 @@
 
 <header class="top">
   <a class="brand" href="home.html"><span class="pulse"></span>Dave <em>Frehner</em></a>
-  <span class="tag">Fotografie · Reisen · Kunst</span>
+  <span class="tag">Reisejournal · Fotografie</span>
 </header>
 
 <button class="fab" aria-label="Menü öffnen" aria-expanded="false" aria-controls="neuro-menu">
@@ -64,7 +80,12 @@
         </ul>
       </div>
       <div class="reveal reveal-d1">
-        <form class="contact-form" action="mailto:frehner28@gmail.com" method="post" enctype="text/plain">
+        <p class="form-ok" hidden>✓ Danke — Deine Nachricht ist unterwegs! Ich melde mich innert 1–2 Tagen.</p>
+        <form class="contact-form" action="https://formsubmit.co/frehner28@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Neue Nachricht über monsnix.com">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://monsnix.com/kontakt.html?sent=1">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <label>Name<input type="text" name="name" required autocomplete="name"></label>
             <label>E-Mail<input type="email" name="email" required autocomplete="email"></label>
@@ -72,7 +93,7 @@
           <label>Betreff<input type="text" name="betreff"></label>
           <label>Nachricht<textarea name="nachricht" required></textarea></label>
           <div><button class="btn btn-primary" type="submit">Nachricht senden <span class="arrow">→</span></button></div>
-          <p style="font-size:.8rem;color:var(--mut)">Hinweis: Das Formular ist ein Platzhalter. Für den Live-Betrieb binden wir einen Formular-Dienst (z.&nbsp;B. Formspree) ein.</p>
+          <p style="font-size:.8rem;color:var(--mut)">Deine Nachricht landet direkt in meinem Postfach.</p>
         </form>
       </div>
     </div>
@@ -85,7 +106,7 @@
     <div class="footer-grid">
       <div style="max-width:22rem">
         <a class="brand" href="home.html"><span class="pulse"></span>Dave <em>Frehner</em></a>
-        <p style="color:var(--mut);margin-top:1rem;font-size:.95rem">Fotografie- und Reisejournal. Geschichten und Bilder von unterwegs.</p>
+        <p style="color:var(--mut);margin-top:1rem;font-size:.95rem">Reisejournal von Dave Frehner. Geschichten von unterwegs — und die Bilder dazu.</p>
       </div>
       <div>
         <h4>Seiten</h4>

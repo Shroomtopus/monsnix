@@ -555,8 +555,9 @@ h3{font-size:1.25rem;font-weight:600}
 @media(max-width:640px){.ba{aspect-ratio:4/4.4}}
 .ba img{width:100%;height:100%;object-fit:cover;pointer-events:none}
 .ba-after{position:absolute;inset:0}
+.ba-after img{filter:grayscale(.88) brightness(1.3) contrast(.9) sepia(.12) hue-rotate(170deg)}
 .ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x)) 0 0)}
-.ba-before img{filter:grayscale(1) contrast(.92) brightness(.82)}
+.ba-before img{filter:saturate(1.15) contrast(1.03)}
 .ba-handle{
   position:absolute;top:0;bottom:0;left:var(--x);width:2px;transform:translateX(-1px);
   background:var(--grad);box-shadow:0 0 20px rgba(124,92,255,.85);pointer-events:none;
@@ -603,3 +604,64 @@ h3{font-size:1.25rem;font-weight:600}
   font-family:var(--font-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);
 }
 @media(max-width:700px){.lb-nav{width:44px;height:44px}.lb-prev{left:.7rem}.lb-next{right:.7rem}.lb-hint{display:none}}
+
+
+/* ============================================================
+   v2.4 — Featured, Chips, Reisekarte, Formular-Feedback
+   ============================================================ */
+
+/* ---------- Chips (Reise-Meta) ---------- */
+.chips{display:flex;gap:.55rem;flex-wrap:wrap}
+.chip{
+  font-family:var(--font-m);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.5rem .85rem;border-radius:999px;color:var(--mut);
+  border:1px solid var(--line);background:rgba(13,18,27,.5);
+}
+.chip-loc{color:var(--cya);border-color:rgba(67,224,208,.35)}
+
+/* ---------- Featured Bericht ---------- */
+.feat{
+  position:relative;display:grid;grid-template-columns:1.35fr 1fr;
+  border-radius:var(--r);overflow:hidden;background:var(--panel);border:1px solid var(--line);
+  transition:border-color .4s,box-shadow .4s;
+}
+.feat:hover{border-color:rgba(124,92,255,.5);box-shadow:0 30px 70px -35px rgba(124,92,255,.5)}
+.feat-media{position:relative;min-height:340px;overflow:hidden}
+.feat-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.feat:hover .feat-media img{transform:scale(1.06)}
+.feat-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(13,18,27,.55))}
+.feat-body{padding:clamp(1.6rem,3.5vw,3rem);display:flex;flex-direction:column;justify-content:center;gap:1rem}
+.feat-body h3{font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.15}
+.feat-body p{color:var(--mut)}
+@media(max-width:860px){.feat{grid-template-columns:1fr}.feat-media{min-height:230px}.feat-media::after{background:linear-gradient(180deg,transparent 55%,rgba(13,18,27,.6))}}
+
+/* ---------- Reisekarte ---------- */
+.map-wrap{
+  border:1px solid var(--line);border-radius:var(--r);padding:clamp(.8rem,2vw,1.8rem);
+  background:
+    radial-gradient(60% 60% at 20% 15%,rgba(124,92,255,.08),transparent 60%),
+    radial-gradient(55% 55% at 85% 80%,rgba(67,224,208,.07),transparent 60%),
+    var(--panel);
+  overflow:hidden;
+}
+.world{width:100%;height:auto;display:block}
+.map-dots circle{fill:rgba(139,148,167,.30)}
+.map-pin{transform-box:fill-box}
+.map-pin .pc{fill:currentColor;filter:drop-shadow(0 0 6px currentColor)}
+.map-pin .pp{fill:none;stroke:currentColor;stroke-width:1.4;animation:pinp 2.8s ease-out infinite}
+.pin-home{color:#43e0d0}
+.pin-ex{color:#7c5cff}
+.pin-ex .pp{animation-delay:-.9s}
+.pin-plan{color:#8b94a7}
+.pin-plan .pp{animation-delay:-1.8s}
+@keyframes pinp{0%{r:4;opacity:.9}75%{r:16;opacity:0}100%{r:16;opacity:0}}
+.map-legend{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:1.1rem;font-family:var(--font-m);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.map-legend span{display:inline-flex;align-items:center;gap:.5rem}
+.map-legend .lg{width:.6rem;height:.6rem;border-radius:50%;display:inline-block}
+
+/* ---------- Formular-Feedback ---------- */
+.form-ok{
+  margin-bottom:1.2rem;padding:1rem 1.2rem;border-radius:12px;
+  border:1px solid rgba(67,224,208,.45);background:rgba(67,224,208,.08);color:var(--cya);
+  font-weight:500;
+}
