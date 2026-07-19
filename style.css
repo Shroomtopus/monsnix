@@ -177,7 +177,7 @@ body.menu-open .n-node:nth-child(5){transition-delay:.42s}
   color:var(--cya);display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.1rem;
 }
 .kicker::before{content:"";width:26px;height:1px;background:var(--grad)}
-h1,h2,h3{font-family:var(--font-d);font-weight:700;line-height:1.04;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--font-d);font-weight:700;line-height:1.14;letter-spacing:-.01em;padding-bottom:.05em}
 h2{font-size:clamp(1.9rem,4.4vw,3.2rem);margin-bottom:1rem}
 h3{font-size:1.25rem;font-weight:600}
 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -282,7 +282,7 @@ h3{font-size:1.25rem;font-weight:600}
 .marquee{overflow:hidden;border-block:1px solid var(--line);padding:1.15rem 0;background:var(--bg1)}
 .marquee-track{display:flex;gap:3rem;width:max-content;animation:mq 26s linear infinite;font-family:var(--font-d);font-weight:700;font-size:1rem;letter-spacing:.18em;text-transform:uppercase}
 .marquee-track span{display:flex;align-items:center;gap:3rem;color:var(--ink)}
-.marquee-track .o{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.marquee-track .o{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;font-size:inherit}
 .marquee-track .s{color:var(--cya);font-size:.7em}
 @keyframes mq{to{transform:translateX(-50%)}}
 
