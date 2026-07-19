@@ -103,36 +103,37 @@
     const hint  = $(".intro-hint", intro);
     const chapters = $$(".intro-chapter", intro);
     const F = ["ƒ/16","ƒ/11","ƒ/8","ƒ/5.6","ƒ/4","ƒ/2.8","ƒ/2","ƒ/1.4"];
-    const windows = [[0,.2],[.24,.44],[.48,.68],[.74,1.01]];
+    const windows = [[0,.24],[.27,.5],[.53,.74],[.78,1.01]];
 
     const tick = () => {
       const rect = intro.getBoundingClientRect();
       const total = intro.offsetHeight - innerHeight;
       const p = clamp(-rect.top / total, 0, 1);
 
-      // entrance: tilt -> flat (first 25%)
-      const e = clamp(p / .25, 0, 1);
+      // entrance: tilt -> flat (first 16%)
+      const e = clamp(p / .16, 0, 1);
       const settle = 1 - Math.pow(1 - e, 3);
       lens.style.transform =
         `perspective(1100px) rotateX(${(1-settle)*22}deg) scale(${.86 + settle*.14}) rotateZ(${(1-settle)*-6}deg)`;
 
       // rings rotate with scroll
-      ticks.style.transform = `rotate(${p*300}deg)`;
-      grad.style.transform  = `rotate(${-p*210}deg)`;
+      ticks.style.transform = `rotate(${p*240}deg)`;
+      grad.style.transform  = `rotate(${-p*170}deg)`;
 
-      // aperture opens
-      const r = 9 + p * 37;                       // 9% -> 46%
+      // aperture opens (fully open by ~80% progress)
+      const ap = clamp(p * 1.25, 0, 1);
+      const r = 9 + ap * 37;                      // 9% -> 46%
       img.style.clipPath = `circle(${r}% at 50% 50%)`;
-      img.style.transform = `scale(${1.45 - p*.45})`;
-      blades.style.opacity = String(clamp(.85 - p*1.1, 0, .85));
-      blades.style.transform = `rotate(${p*140}deg)`;
+      img.style.transform = `scale(${1.45 - ap*.45})`;
+      blades.style.opacity = String(clamp(.85 - ap*1.1, 0, .85));
+      blades.style.transform = `rotate(${ap*140}deg)`;
 
       // finale: dim photo behind title
       const dim = clamp((p - .68) / .32, 0, 1);
       img.style.filter = `brightness(${(1 - dim*.55).toFixed(2)}) saturate(${(1 - dim*.25).toFixed(2)})`;
 
       // f-stop readout
-      if (read) read.textContent = F[clamp(Math.floor(p * F.length), 0, F.length-1)];
+      if (read) read.textContent = F[clamp(Math.floor(ap * F.length), 0, F.length-1)];
 
       // chapters
       chapters.forEach((c,i) => {
@@ -143,6 +144,14 @@
     };
     addEventListener("scroll", () => requestAnimationFrame(tick), { passive:true });
     tick();
+
+    // click on hint skips the intro
+    if (hint){
+      hint.title = "Intro überspringen";
+      hint.addEventListener("click", () => {
+        scrollTo({ top: intro.offsetHeight - innerHeight + 2, behavior: "auto" });
+      });
+    }
   }
 
   /* ---------- Tilt cards ---------- */
@@ -263,12 +272,12 @@
   addEventListener("wheel", e => {
     if (document.body.classList.contains("menu-open") || e.ctrlKey || e.defaultPrevented) return;
     e.preventDefault();
-    const d = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY;
+    const d = (e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY) * 1.18;
     target = Math.max(0, Math.min(max(), target + d));
     if (raf === null) raf = requestAnimationFrame(step);
   }, { passive:false });
   function step(){
-    const cur = scrollY, next = cur + (target - cur) * .13;
+    const cur = scrollY, next = cur + (target - cur) * .18;
     if (Math.abs(target - next) < .6){ scrollTo(0, target); raf = null; return; }
     scrollTo(0, next); raf = requestAnimationFrame(step);
   }
