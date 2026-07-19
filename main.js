@@ -16,7 +16,9 @@
     if (top) top.classList.toggle("hidden", scrollY > 140 && scrollY > lastY);
     lastY = scrollY;
   };
-  addEventListener("scroll", onScrollUI, { passive:true }); onScrollUI();
+  let uiQ = false;
+  addEventListener("scroll", () => { if (!uiQ){ uiQ = true; requestAnimationFrame(() => { onScrollUI(); uiQ = false; }); } }, { passive:true });
+  onScrollUI();
 
   /* ---------- Neuron menu ---------- */
   const fab = $(".fab"), neuro = $(".neuro");
@@ -84,12 +86,17 @@
   /* ---------- Parallax media ---------- */
   const plx = $$("[data-parallax]");
   const parallax = () => plx.forEach(el => {
-    const sp = parseFloat(el.dataset.parallax) || .12;
     const r = el.parentElement.getBoundingClientRect();
+    if (r.bottom < -innerHeight * .3 || r.top > innerHeight * 1.3) return;
+    const sp = parseFloat(el.dataset.parallax) || .12;
     const v = (r.top + r.height/2 - innerHeight/2) * sp;
     el.style.transform = `translate3d(0,${v.toFixed(1)}px,0) scale(1.12)`;
   });
-  if (!RM && plx.length){ addEventListener("scroll", () => requestAnimationFrame(parallax), { passive:true }); parallax(); }
+  if (!RM && plx.length){
+    let plxQ = false;
+    addEventListener("scroll", () => { if (!plxQ){ plxQ = true; requestAnimationFrame(() => { parallax(); plxQ = false; }); } }, { passive:true });
+    parallax();
+  }
 
   /* ---------- INTRO scrollytelling (lens) ---------- */
   const intro = $(".intro");
@@ -142,7 +149,8 @@
       });
       if (hint) hint.style.opacity = String(clamp(1 - p*6, 0, 1));
     };
-    addEventListener("scroll", () => requestAnimationFrame(tick), { passive:true });
+    let tickQ = false;
+    addEventListener("scroll", () => { if (!tickQ){ tickQ = true; requestAnimationFrame(() => { tick(); tickQ = false; }); } }, { passive:true });
     tick();
 
     // click on hint skips the intro
@@ -188,18 +196,20 @@
     const glow = document.createElement("div");
     glow.className = "cursor-glow";
     document.body.appendChild(glow);
-    let gx=0, gy=0, tx=0, ty=0, shown=false;
+    let gx=0, gy=0, tx=0, ty=0, shown=false, glowRaf=null;
+    const loop = () => {
+      gx += (tx-gx)*.22; gy += (ty-gy)*.22;
+      glow.style.left = gx+"px"; glow.style.top = gy+"px";
+      if (Math.abs(tx-gx) + Math.abs(ty-gy) > .4) glowRaf = requestAnimationFrame(loop);
+      else glowRaf = null;
+    };
     addEventListener("pointermove", e => {
       tx = e.clientX; ty = e.clientY;
-      if (!shown){ glow.style.opacity = ".9"; shown = true; }
+      if (!shown){ glow.style.opacity = ".9"; shown = true; gx = tx; gy = ty; }
       const t = e.target.closest("a,button,.g-item,[data-tilt]");
       glow.classList.toggle("big", !!t);
+      if (glowRaf === null) glowRaf = requestAnimationFrame(loop);
     }, { passive:true });
-    (function loop(){
-      gx += (tx-gx)*.16; gy += (ty-gy)*.16;
-      glow.style.left = gx+"px"; glow.style.top = gy+"px";
-      requestAnimationFrame(loop);
-    })();
   }
 
   /* ---------- Gallery filters ---------- */
@@ -285,25 +295,13 @@
 })();
 
 
-/* ============ v2.1: smooth wheel scrolling ============ */
+/* ============ v2.2: Natives Scrolling (Vivaldi glättet selbst) + Videos offscreen pausieren ============ */
 (() => {
-  const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (RM || !matchMedia("(pointer:fine)").matches) return;
-  let target = scrollY, raf = null;
-  const max = () => document.documentElement.scrollHeight - innerHeight;
-  addEventListener("scroll", () => { if (raf === null) target = scrollY; }, { passive:true });
-  addEventListener("wheel", e => {
-    if (document.body.classList.contains("menu-open") || e.ctrlKey || e.defaultPrevented) return;
-    e.preventDefault();
-    const d = (e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY) * 1.35;
-    target = Math.max(0, Math.min(max(), target + d));
-    if (raf === null) raf = requestAnimationFrame(step);
-  }, { passive:false });
-  function step(){
-    const cur = scrollY, next = cur + (target - cur) * .22;
-    if (Math.abs(target - next) < .6){ scrollTo(0, target); raf = null; return; }
-    scrollTo(0, next); raf = requestAnimationFrame(step);
-  }
+  document.querySelectorAll("video[autoplay]").forEach(v => {
+    new IntersectionObserver(es => es.forEach(x => {
+      if (x.isIntersecting) v.play().catch(()=>{}); else v.pause();
+    }), { threshold:.05 }).observe(v);
+  });
 })();
 
 /* ============ v2.1: curtain page transitions ============ */
