@@ -264,7 +264,7 @@ h3{font-size:1.25rem;font-weight:600}
 .intro-chapter.ch-4.active{transform:translate(-50%,-50%)}
 .ch-4 .big{font-size:clamp(2.6rem,7vw,5.4rem)}
 .ch-4 .actions{display:flex;gap:1rem;justify-content:center;margin-top:1.8rem;pointer-events:auto;flex-wrap:wrap}
-@media(max-width:820px){
+@media(max-width:920px){
   .intro{height:200vh}
   .lens{width:min(72vw,36vh);margin-bottom:34vh}
   .lens-read{display:none}
@@ -696,3 +696,33 @@ h3{font-size:1.25rem;font-weight:600}
 .map-tip i{width:.5rem;height:.5rem;border-radius:50%;background:var(--tipc);box-shadow:0 0 8px var(--tipc);flex:none}
 .map-tip.show{opacity:1;transform:translate(-50%,-135%) scale(1)}
 @media(max-width:700px){.map-tip{font-size:.6rem;letter-spacing:.08em}}
+
+
+/* ============================================================
+   v2.6 — Schlussabnahme: Clipping, Landscape, A11y, Polish
+   ============================================================ */
+
+/* Kurze Bildschirme (Handy quer): keine Blenden-Zeile, kleinere Linse */
+@media (max-height:660px){
+  .lens-read{display:none}
+  .lens{width:min(52vh,60vw)}
+  .intro-hint{display:none}
+}
+
+/* Schrift-Unterlängen nie abschneiden */
+.band .big-line{line-height:1.14;padding-bottom:.06em}
+.intro-chapter .big{line-height:1.08;padding-bottom:.04em}
+.n-label{line-height:1.14;padding-bottom:.05em}
+.feat-body h3{padding-bottom:.05em}
+
+/* Tastatur-Fokus sichtbar (Synapse-Stil) */
+:focus-visible{outline:2px solid var(--cya);outline-offset:3px;border-radius:4px}
+
+/* Skip-Link für Screenreader/Tastatur */
+.skip{
+  position:fixed;left:1rem;top:-100px;z-index:10001;
+  font-family:var(--font-d);font-weight:600;font-size:.9rem;
+  background:var(--grad);color:#0b0d12;padding:.8rem 1.3rem;border-radius:999px;
+  transition:top .3s var(--ease);
+}
+.skip:focus{top:1rem}

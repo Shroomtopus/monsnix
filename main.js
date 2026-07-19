@@ -248,6 +248,7 @@
       setContent(fig);
       lb.classList.add("open");
       document.documentElement.style.overflow = "hidden";
+      setTimeout(() => { const x = lb.querySelector(".lb-x"); x && x.focus(); }, 80);
     };
     const closeLb = () => { lb.classList.remove("open"); document.documentElement.style.overflow = ""; };
     $$(".g-item").forEach(f => f.addEventListener("click", () => openLb(f)));
