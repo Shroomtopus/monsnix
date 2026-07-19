@@ -652,6 +652,10 @@ h3{font-size:1.25rem;font-weight:600}
 .pin-home{color:#43e0d0}
 .pin-ex{color:#7c5cff}
 .pin-ex .pp{animation-delay:-.9s}
+.pin-was{color:#7c5cff}
+.pin-was .pc{filter:drop-shadow(0 0 5px rgba(124,92,255,.9))}
+.pin-heim{color:#f2efe9}
+.pin-heim .pp{animation-delay:-1.4s}
 .pin-plan{color:#8b94a7}
 .pin-plan .pp{animation-delay:-1.8s}
 @keyframes pinp{0%{r:4;opacity:.9}75%{r:16;opacity:0}100%{r:16;opacity:0}}
