@@ -669,3 +669,30 @@ h3{font-size:1.25rem;font-weight:600}
   border:1px solid rgba(67,224,208,.45);background:rgba(67,224,208,.08);color:var(--cya);
   font-weight:500;
 }
+
+
+/* ---------- Karten-Tooltip ---------- */
+.map-wrap{position:relative}
+.map-pin{cursor:pointer}
+.map-pin .hit{pointer-events:all}
+.map-tip{
+  --tipc:#43e0d0;
+  position:absolute;z-index:5;pointer-events:none;
+  transform:translate(-50%,-135%) scale(.85);transform-origin:bottom center;
+  opacity:0;transition:opacity .25s var(--ease),transform .25s var(--ease);
+  font-family:var(--font-m);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink);white-space:nowrap;
+  background:rgba(10,14,21,.92);border:1px solid var(--tipc);
+  padding:.55rem .9rem;border-radius:10px;
+  box-shadow:0 8px 30px -8px rgba(0,0,0,.8),0 0 18px -6px var(--tipc);
+  display:flex;align-items:center;gap:.5rem;
+  backdrop-filter:blur(6px);
+}
+.map-tip::after{
+  content:"";position:absolute;left:50%;bottom:-5px;transform:translateX(-50%) rotate(45deg);
+  width:8px;height:8px;background:rgba(10,14,21,.92);
+  border-right:1px solid var(--tipc);border-bottom:1px solid var(--tipc);
+}
+.map-tip i{width:.5rem;height:.5rem;border-radius:50%;background:var(--tipc);box-shadow:0 0 8px var(--tipc);flex:none}
+.map-tip.show{opacity:1;transform:translate(-50%,-135%) scale(1)}
+@media(max-width:700px){.map-tip{font-size:.6rem;letter-spacing:.08em}}

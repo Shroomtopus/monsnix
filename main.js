@@ -360,3 +360,34 @@
   const ok = document.querySelector(".form-ok");
   if (ok){ ok.hidden = false; setTimeout(() => ok.scrollIntoView({ block:"center", behavior:"smooth" }), 300); }
 })();
+
+
+/* ============ v2.5: Reisekarten-Tooltip ============ */
+(() => {
+  const wrap = document.querySelector(".map-wrap");
+  if (!wrap) return;
+  const tip = document.createElement("div");
+  tip.className = "map-tip";
+  tip.innerHTML = "<i></i><span></span>";
+  wrap.appendChild(tip);
+  const txt = tip.querySelector("span");
+  let hideT = null;
+  const show = pin => {
+    const label = pin.dataset.label;
+    if (!label) return;
+    txt.textContent = label;
+    tip.style.setProperty("--tipc", getComputedStyle(pin).color);
+    const wr = wrap.getBoundingClientRect(), pr = pin.getBoundingClientRect();
+    tip.style.left = (pr.left - wr.left + pr.width / 2) + "px";
+    tip.style.top  = (pr.top - wr.top) + "px";
+    tip.classList.add("show");
+  };
+  wrap.querySelectorAll(".map-pin").forEach(pin => {
+    pin.addEventListener("mouseenter", () => { clearTimeout(hideT); show(pin); });
+    pin.addEventListener("mouseleave", () => { hideT = setTimeout(() => tip.classList.remove("show"), 120); });
+    pin.addEventListener("click", () => {          // Touch: antippen zeigt Label
+      clearTimeout(hideT); show(pin);
+      hideT = setTimeout(() => tip.classList.remove("show"), 2000);
+    });
+  });
+})();
