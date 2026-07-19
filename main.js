@@ -251,7 +251,15 @@
     };
     const closeLb = () => { lb.classList.remove("open"); document.documentElement.style.overflow = ""; };
     $$(".g-item").forEach(f => f.addEventListener("click", () => openLb(f)));
+    let swX = null, swiped = false;
+    lb.addEventListener("pointerdown", e => { swX = e.clientX; }, { passive:true });
+    lb.addEventListener("pointerup", e => {
+      if (swX === null) return;
+      const dx = e.clientX - swX; swX = null;
+      if (Math.abs(dx) > 45){ swiped = true; if (dx < 0) show(idx + 1); else show(idx - 1); }
+    }, { passive:true });
     lb.addEventListener("click", e => {
+      if (swiped){ swiped = false; return; }
       if (e.target.closest(".lb-next")) return show(idx + 1);
       if (e.target.closest(".lb-prev")) return show(idx - 1);
       if (e.target === lb || e.target.closest(".lb-x")) closeLb();
