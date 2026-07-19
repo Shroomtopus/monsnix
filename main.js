@@ -251,3 +251,66 @@
   /* ---------- Year ---------- */
   $$("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
 })();
+
+
+/* ============ v2.1: smooth wheel scrolling ============ */
+(() => {
+  const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (RM || !matchMedia("(pointer:fine)").matches) return;
+  let target = scrollY, raf = null;
+  const max = () => document.documentElement.scrollHeight - innerHeight;
+  addEventListener("scroll", () => { if (raf === null) target = scrollY; }, { passive:true });
+  addEventListener("wheel", e => {
+    if (document.body.classList.contains("menu-open") || e.ctrlKey || e.defaultPrevented) return;
+    e.preventDefault();
+    const d = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY;
+    target = Math.max(0, Math.min(max(), target + d));
+    if (raf === null) raf = requestAnimationFrame(step);
+  }, { passive:false });
+  function step(){
+    const cur = scrollY, next = cur + (target - cur) * .13;
+    if (Math.abs(target - next) < .6){ scrollTo(0, target); raf = null; return; }
+    scrollTo(0, next); raf = requestAnimationFrame(step);
+  }
+})();
+
+/* ============ v2.1: curtain page transitions ============ */
+(() => {
+  const c = document.querySelector(".curtain");
+  if (!c) return;
+  const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!RM){
+    c.classList.add("cover");
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      c.classList.add("anim","exit");
+      setTimeout(() => c.classList.remove("cover","anim","exit"), 760);
+    }));
+  }
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[href]");
+    if (!a) return;
+    const h = a.getAttribute("href");
+    if (!h || h.startsWith("#") || h.startsWith("mailto:") || h.startsWith("http") ||
+        a.target === "_blank" || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || RM) return;
+    e.preventDefault();
+    document.body.classList.remove("menu-open");
+    document.documentElement.style.overflow = "";
+    c.classList.add("anim","cover");
+    setTimeout(() => location.href = h, 640);
+  });
+  addEventListener("pageshow", ev => { if (ev.persisted) c.classList.remove("cover","anim","exit"); });
+})();
+
+/* ============ v2.1: before/after slider ============ */
+(() => {
+  const ba = document.querySelector("[data-ba]");
+  if (!ba) return;
+  const set = x => {
+    const r = ba.getBoundingClientRect();
+    ba.style.setProperty("--x", Math.max(3, Math.min(97, (x - r.left) / r.width * 100)).toFixed(2) + "%");
+  };
+  let down = false;
+  ba.addEventListener("pointerdown", e => { down = true; ba.setPointerCapture(e.pointerId); set(e.clientX); });
+  ba.addEventListener("pointermove", e => down && set(e.clientX));
+  addEventListener("pointerup", () => down = false);
+})();

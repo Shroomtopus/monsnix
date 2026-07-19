@@ -451,3 +451,119 @@ h3{font-size:1.25rem;font-weight:600}
   .lens-aperture img{clip-path:circle(46% at 50% 50%)}
   body::after{display:none}
 }
+
+
+/* ============================================================
+   v2.1 — Curtain / Neuron-Lens / Before-After
+   ============================================================ */
+
+/* ---------- Curtain page transition ---------- */
+.curtain{
+  position:fixed;inset:0;z-index:9998;pointer-events:none;
+  transform:translateY(102%);
+  background:linear-gradient(#0b0f17,#06080b);
+  display:grid;place-items:center;
+}
+.curtain::before{
+  content:"";position:absolute;left:0;right:0;top:-5px;height:5px;
+  background:var(--grad);filter:blur(.5px);box-shadow:0 0 24px rgba(124,92,255,.8);
+}
+.curtain::after{
+  content:"";position:absolute;left:0;right:0;bottom:-5px;height:5px;
+  background:var(--grad);filter:blur(.5px);box-shadow:0 0 24px rgba(67,224,208,.8);
+}
+.curtain-brand{
+  font-family:var(--font-m);font-size:.64rem;letter-spacing:.55em;text-transform:uppercase;
+  color:var(--mut);opacity:0;transition:opacity .25s;padding-left:.55em;
+}
+.curtain.cover{transform:none;pointer-events:all}
+.curtain.cover .curtain-brand{opacity:1}
+.curtain.anim{transition:transform .62s cubic-bezier(.76,0,.24,1)}
+.curtain.exit{transform:translateY(-102%)}
+
+/* ---------- Neuron lens backdrop ---------- */
+.n-dot,.n-num,.n-label{position:relative;z-index:1}
+.n-lens{
+  position:absolute;left:7px;top:50%;width:132px;height:132px;
+  transform:translate(-50%,-50%) scale(.9);border-radius:50%;z-index:0;
+  background:#0a0e15;border:1px solid var(--line);overflow:hidden;
+  box-shadow:0 0 46px -14px rgba(124,92,255,.4),inset 0 0 34px rgba(0,0,0,.85);
+  transition:transform .6s var(--ease),border-color .5s,box-shadow .5s;
+}
+.n-lens img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  clip-path:circle(12% at 50% 50%);transform:scale(1.32);
+  filter:saturate(.9) brightness(.85);
+  transition:clip-path .65s var(--ease),transform .65s var(--ease),filter .5s;
+}
+.n-iris{
+  position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,
+    rgba(6,8,11,.92) 0 30deg,transparent 30deg 60deg,
+    rgba(6,8,11,.92) 60deg 90deg,transparent 90deg 120deg,
+    rgba(6,8,11,.92) 120deg 150deg,transparent 150deg 180deg,
+    rgba(6,8,11,.92) 180deg 210deg,transparent 210deg 240deg,
+    rgba(6,8,11,.92) 240deg 270deg,transparent 270deg 300deg,
+    rgba(6,8,11,.92) 300deg 330deg,transparent 330deg 360deg);
+  opacity:.85;mix-blend-mode:multiply;
+  transition:opacity .55s var(--ease),transform .65s var(--ease);
+}
+.n-ring{
+  position:absolute;inset:6px;border-radius:50%;pointer-events:none;
+  background:repeating-conic-gradient(rgba(242,239,233,.55) 0 .7deg,transparent .7deg 9deg);
+  -webkit-mask:radial-gradient(circle,transparent 82%,#000 83%,#000 91%,transparent 92%);
+          mask:radial-gradient(circle,transparent 82%,#000 83%,#000 91%,transparent 92%);
+  opacity:.55;transition:transform .9s var(--ease),opacity .5s;
+}
+.n-node:hover .n-lens,.n-node[aria-current] .n-lens{
+  transform:translate(-50%,-50%) scale(1.06);
+  border-color:rgba(67,224,208,.5);
+  box-shadow:0 0 60px -12px rgba(67,224,208,.55),inset 0 0 24px rgba(0,0,0,.6);
+}
+.n-node:hover .n-lens img,.n-node[aria-current] .n-lens img{
+  clip-path:circle(50% at 50% 50%);transform:scale(1.04);filter:saturate(1.05) brightness(1);
+}
+.n-node:hover .n-iris,.n-node[aria-current] .n-iris{opacity:0;transform:rotate(55deg)}
+.n-node:hover .n-ring{transform:rotate(130deg);opacity:.85}
+@media(max-width:760px){.n-lens{width:100px;height:100px}}
+
+/* ---------- Before / After slider ---------- */
+.ba{
+  --x:50%;
+  position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);
+  aspect-ratio:16/8.6;cursor:ew-resize;user-select:none;-webkit-user-select:none;touch-action:none;
+  background:var(--panel);
+}
+@media(max-width:640px){.ba{aspect-ratio:4/4.4}}
+.ba img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-after{position:absolute;inset:0}
+.ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.ba-before img{filter:grayscale(1) contrast(.92) brightness(.82)}
+.ba-handle{
+  position:absolute;top:0;bottom:0;left:var(--x);width:2px;transform:translateX(-1px);
+  background:var(--grad);box-shadow:0 0 20px rgba(124,92,255,.85);pointer-events:none;
+}
+.ba-knob{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:60px;height:60px;border-radius:50%;
+  background:rgba(10,14,21,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(124,92,255,.65);display:grid;place-items:center;
+  font-family:var(--font-m);font-size:.86rem;color:var(--cya);letter-spacing:.05em;
+  box-shadow:0 0 0 6px rgba(124,92,255,.12),0 0 30px rgba(124,92,255,.4);
+}
+.ba-knob::after{
+  content:"";position:absolute;inset:5px;border-radius:50%;
+  background:repeating-conic-gradient(rgba(242,239,233,.5) 0 .8deg,transparent .8deg 11deg);
+  -webkit-mask:radial-gradient(circle,transparent 78%,#000 80%,#000 92%,transparent 94%);
+          mask:radial-gradient(circle,transparent 78%,#000 80%,#000 92%,transparent 94%);
+  animation:spin 14s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ba-tag{
+  position:absolute;bottom:1rem;z-index:2;
+  font-family:var(--font-m);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;
+  padding:.5rem .85rem;border-radius:999px;
+  background:rgba(6,8,11,.55);backdrop-filter:blur(8px);border:1px solid var(--line);
+}
+.ba-tag-l{left:1rem;color:var(--mut)}
+.ba-tag-r{right:1rem;color:var(--cya)}
