@@ -4,208 +4,76 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dave Frehner — Fotografie &amp; Reisen</title>
-<meta name="description" content="Persönlicher Foto- und Reiseblog von Dave Frehner. Geschichten, Bilder und Eindrücke von unterwegs.">
+<meta name="description" content="Die neue Foto- und Reise-Seite von Dave Frehner entsteht. Bald hier.">
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d; --text:#f4f2ee; --muted:#a5a1a0;
+    --grad:linear-gradient(100deg,#ff9a62,#ff7d8a 35%,#8aa0ff 70%,#7bdff2);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:"Inter",system-ui,sans-serif;
+    min-height:100dvh; display:flex; align-items:center; justify-content:center;
+    padding:2rem; overflow:hidden; position:relative;
+  }
+  body::before{
+    content:""; position:absolute; inset:-30%; z-index:0;
+    background:
+      radial-gradient(40% 40% at 25% 30%, rgba(255,140,90,.18), transparent 70%),
+      radial-gradient(45% 45% at 75% 70%, rgba(120,160,255,.16), transparent 70%),
+      radial-gradient(35% 35% at 60% 25%, rgba(123,223,242,.10), transparent 70%);
+    filter:blur(10px);
+    animation:drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift{from{transform:translate3d(-2%, -1%,0) scale(1)}to{transform:translate3d(2%,2%,0) scale(1.08)}}
+  .wrap{position:relative; z-index:1; text-align:center; max-width:44rem}
+  .brand{
+    font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem;
+    letter-spacing:.01em; margin-bottom:2.5rem;
+  }
+  .brand em{font-style:italic; font-weight:500;
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .badge{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--muted); border:1px solid rgba(255,255,255,.14);
+    padding:.5rem 1rem; border-radius:999px; margin-bottom:2rem;
+  }
+  .badge .dot{width:.5rem; height:.5rem; border-radius:50%;
+    background:linear-gradient(90deg,#ff8a5b,#7bdff2); box-shadow:0 0 12px rgba(255,140,90,.7)}
+  h1{
+    font-family:"Fraunces",serif; font-weight:600; line-height:1.02;
+    font-size:clamp(2.6rem,8vw,5rem); letter-spacing:-.01em; margin-bottom:1.4rem;
+  }
+  h1 .g{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  p.lead{
+    color:var(--muted); font-size:clamp(1rem,2.4vw,1.2rem); line-height:1.6;
+    max-width:34rem; margin:0 auto 2.4rem;
+  }
+  .contact{
+    display:inline-block; color:var(--text); text-decoration:none;
+    font-size:.95rem; border-bottom:1px solid rgba(255,255,255,.35);
+    padding-bottom:2px; transition:border-color .2s,color .2s;
+  }
+  .contact:hover{color:#fff; border-color:#fff}
+  .foot{margin-top:3rem; font-size:.8rem; color:rgba(165,161,160,.6)}
+</style>
 </head>
 <body>
-
-<div class="scroll-progress" aria-hidden="true"><span></span></div>
-
-<button class="fab-nav" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mega-menu">
-  <span class="bars"><span></span><span></span><span></span></span>
-</button>
-
-<nav class="mega-menu" id="mega-menu" aria-label="Seitenmenü">
-  <div class="mega-inner">
-    <ul class="mega-links">
-      <li><a href="index.html" aria-current="page"><span class="num">01</span>Start</a></li>
-      <li><a href="reisen.html"><span class="num">02</span>Reisen</a></li>
-      <li><a href="galerie.html"><span class="num">03</span>Galerie</a></li>
-      <li><a href="ueber-mich.html"><span class="num">04</span>Über mich</a></li>
-      <li><a href="kontakt.html"><span class="num">05</span>Kontakt</a></li>
-    </ul>
-    <div class="mega-footer">Fotografie &amp; Reisen · Dave Frehner</div>
-  </div>
-</nav>
-
-<header class="site-header">
-  <nav class="nav" aria-label="Hauptnavigation">
-    <a class="brand" href="index.html">Dave <em>Frehner</em></a>
-    <ul class="nav-links">
-      <li><a href="index.html" aria-current="page">Start</a></li>
-      <li><a href="reisen.html">Reisen</a></li>
-      <li><a href="galerie.html">Galerie</a></li>
-      <li><a href="ueber-mich.html">Über mich</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-media">
-      <video autoplay muted loop playsinline poster="swan.jpg" aria-label="Fotoimpressionen als Videoschleife">
-        <source src="hero.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="hero-content">
-      <span><span class="hero-badge"><span class="dot"></span>Fotografie &amp; Reiseblog</span></span>
-      <h1>Die Welt sehen.<br><span class="grad-text">Momente festhalten.</span></h1>
-      <p class="lead">Ich bin Dave — unterwegs mit der Kamera. Hier teile ich meine Reisen, Geschichten und die Bilder, die davon bleiben.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="reisen.html">Reiseberichte lesen <span class="arrow">→</span></a>
-        <a class="btn btn-ghost" href="galerie.html">Zur Galerie</a>
-      </div>
-    </div>
-    <span class="hero-scroll" aria-hidden="true">Scrollen</span>
-  </section>
-
-  <!-- Laufband -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track"><span>Fotografie</span><span class="fill">✦</span><span>Reisen</span><span class="fill">Geschichten</span><span>Momente</span><span class="fill">✦</span><span>Unterwegs</span><span class="fill">Abenteuer</span><span>Fotografie</span><span class="fill">✦</span><span>Reisen</span><span class="fill">Geschichten</span><span>Momente</span><span class="fill">✦</span><span>Unterwegs</span><span class="fill">Abenteuer</span></div>
-  </div>
-
-  <!-- Neueste Reisen -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="kicker">Unterwegs</span>
-          <h2>Neueste <span class="grad-text">Reiseberichte</span></h2>
-        </div>
-        <a class="more btn btn-ghost" href="reisen.html">Alle Berichte <span class="arrow">→</span></a>
-      </div>
-      <div class="card-grid">
-        <article class="card reveal">
-          <div class="card-media">
-            <span class="card-tag">Natur</span>
-            <img src="vines.jpg" alt="Dicht bewachsene grüne Blätterwand" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-meta">Juni 2026 · Beispielbericht</span>
-            <h3><a class="card-link-overlay" href="reise-artikel.html">Grüne Wildnis: Unterwegs im Regenwald</a></h3>
-            <p>Platzhalter-Teaser: Hier steht später die Einleitung Deines Reiseberichts — zwei, drei Sätze, die Lust auf mehr machen.</p>
-            <span class="card-link">Weiterlesen →</span>
-          </div>
-        </article>
-        <article class="card reveal reveal-delay-1">
-          <div class="card-media">
-            <span class="card-tag">Tierwelt</span>
-            <img src="swan.jpg" alt="Schwan im Gegenlicht auf dunklem See" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-meta">Mai 2026 · Beispielbericht</span>
-            <h3><a class="card-link-overlay" href="reise-artikel.html">Stille Morgen am See</a></h3>
-            <p>Platzhalter-Teaser: Kurzer Anriss des Berichts. Die ganze Karte ist klickbar und führt zum Artikel.</p>
-            <span class="card-link">Weiterlesen →</span>
-          </div>
-        </article>
-        <article class="card reveal reveal-delay-2">
-          <div class="card-media">
-            <span class="card-tag">Menschen</span>
-            <img src="old-man.jpg" alt="Ausdrucksstarkes Porträt eines älteren Mannes" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-meta">April 2026 · Beispielbericht</span>
-            <h3><a class="card-link-overlay" href="reise-artikel.html">Gesichter einer Reise</a></h3>
-            <p>Platzhalter-Teaser: Begegnungen unterwegs — die Menschen hinter den Orten.</p>
-            <span class="card-link">Weiterlesen →</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Zitat-Banner -->
-  <section class="banner">
-    <div class="bg"><img class="parallax-media" src="vines.jpg" alt="" loading="lazy"></div>
-    <div class="container reveal">
-      <blockquote>«Wer reist, hat Geschichten zu erzählen — wer fotografiert, kann sie zeigen.»</blockquote>
-      <cite>Dave Frehner</cite>
-    </div>
-  </section>
-
-  <!-- Galerie-Vorschau -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="kicker">Ausgewählte Bilder</span>
-          <h2>Aus der <span class="grad-text">Galerie</span></h2>
-        </div>
-        <a class="more btn btn-ghost" href="galerie.html">Ganze Galerie <span class="arrow">→</span></a>
-      </div>
-      <div class="gallery-grid">
-        <figure class="gallery-item tall reveal"><img src="woman.jpg" alt="Künstlerisches Porträt in Schwarz und Gold" loading="lazy"><figcaption class="caption">Porträt · Platzhalter</figcaption></figure>
-        <figure class="gallery-item reveal reveal-delay-1"><img src="colored-face.jpg" alt="Farbenprächtig bemaltes Gesicht" loading="lazy"><figcaption class="caption">Farben · Platzhalter</figcaption></figure>
-        <figure class="gallery-item reveal reveal-delay-2"><img src="face-art.jpg" alt="Dunkles Bodypainting mit Farbakzenten" loading="lazy"><figcaption class="caption">Ausdruck · Platzhalter</figcaption></figure>
-        <figure class="gallery-item tall reveal reveal-delay-1"><img src="swan.jpg" alt="Schwan auf dunklem Wasser" loading="lazy"><figcaption class="caption">Tierwelt · Platzhalter</figcaption></figure>
-        <figure class="gallery-item reveal reveal-delay-2"><img src="vines.jpg" alt="Grüne Blätterwand" loading="lazy"><figcaption class="caption">Natur · Platzhalter</figcaption></figure>
-        <figure class="gallery-item reveal reveal-delay-3"><img src="frame-img4.jpg" alt="Kunstvolle Illustration" loading="lazy"><figcaption class="caption">Kunst · Platzhalter</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- Über mich Teaser -->
-  <section class="section tight">
-    <div class="container split">
-      <div class="split-media reveal">
-        <img src="old-man.jpg" alt="Porträtfotografie — Platzhalter für ein eigenes Foto" loading="lazy">
-      </div>
-      <div class="reveal reveal-delay-1">
-        <span class="kicker">Über mich</span>
-        <h2>Hinter der <span class="grad-text">Kamera</span></h2>
-        <p class="lead">Hier stellst Du Dich kurz vor: Wer bist Du, was treibt Dich an, was findet man auf diesem Blog?</p>
-        <p>Dieser Text ist ein Platzhalter. Zwei kurze Absätze reichen — persönlich, ehrlich, ohne Lebenslauf. Die Details gehören auf die «Über mich»-Seite.</p>
-        <div class="stats">
-          <div class="stat"><span class="num" data-count="24">0</span><span class="label">Länder</span></div>
-          <div class="stat"><span class="num" data-count="120" data-suffix="+">0</span><span class="label">Berichte</span></div>
-          <div class="stat"><span class="num" data-count="8" data-suffix="k">0</span><span class="label">Fotos</span></div>
-        </div>
-        <p style="margin-top:2rem"><a class="btn btn-primary" href="ueber-mich.html">Mehr über mich <span class="arrow">→</span></a></p>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a class="brand" href="index.html">Dave <em>Frehner</em></a>
-        <p class="footer-tagline" style="margin-top:1rem">Fotografie- und Reiseblog. Geschichten und Bilder von unterwegs.</p>
-      </div>
-      <div>
-        <h4>Seiten</h4>
-        <ul>
-          <li><a href="reisen.html">Reiseberichte</a></li>
-          <li><a href="galerie.html">Galerie</a></li>
-          <li><a href="ueber-mich.html">Über mich</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Folge mir</h4>
-        <div class="socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.5.2-1.9.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.4-.3.8-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.5.3 1.9.2.5.4.8.7 1.1.3.3.6.5 1.1.7.4.1.8.3 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.5-.2 1.9-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.4.3-.8.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.5-.3-1.9-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.4-.1-.8-.3-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.2-2.9a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.6V8.4L15.8 12l-6.3 3.6z"/></svg></a>
-          <a href="mailto:frehner28@gmail.com" aria-label="E-Mail"><svg viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.7L3.2 6v12h17.6V6L12 12.7zM4.5 6l7.5 5.6L19.5 6h-15z"/></svg></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Dave Frehner · Alle Rechte vorbehalten</span>
-      <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span>
-    </div>
-  </div>
-</footer>
-
-<script src="main.js"></script>
+  <main class="wrap">
+    <div class="brand">Dave <em>Frehner</em></div>
+    <span class="badge"><span class="dot"></span>Fotografie &amp; Reiseblog</span>
+    <h1>Bald <span class="g">hier</span>.</h1>
+    <p class="lead">Meine neue Seite für Fotografie und Reisen ist im Aufbau —
+      Geschichten, Bilder und Eindrücke von unterwegs. Schau bald wieder vorbei.</p>
+    <a class="contact" href="mailto:frehner28@gmail.com">frehner28@gmail.com</a>
+    <div class="foot">© Dave Frehner · Schweiz</div>
+  </main>
 </body>
 </html>
