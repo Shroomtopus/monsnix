@@ -282,7 +282,7 @@ h3{font-size:1.25rem;font-weight:600}
 .marquee{overflow:hidden;border-block:1px solid var(--line);padding:1.15rem 0;background:var(--bg1)}
 .marquee-track{display:flex;gap:3rem;width:max-content;animation:mq 26s linear infinite;font-family:var(--font-d);font-weight:700;font-size:1rem;letter-spacing:.18em;text-transform:uppercase}
 .marquee-track span{display:flex;align-items:center;gap:3rem;color:var(--ink)}
-.marquee-track .o{-webkit-text-stroke:1px rgba(242,239,233,.4);color:transparent}
+.marquee-track .o{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .marquee-track .s{color:var(--cya);font-size:.7em}
 @keyframes mq{to{transform:translateX(-50%)}}
 
