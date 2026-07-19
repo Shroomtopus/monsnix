@@ -37,9 +37,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* Film grain */
 body::after{
-  content:"";position:fixed;inset:-50%;z-index:9990;pointer-events:none;
+  content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
-  opacity:.05;mix-blend-mode:overlay;animation:grain 9s steps(10) infinite;
+  opacity:.035;
 }
 @keyframes grain{
   0%,100%{transform:translate(0,0)}10%{transform:translate(-2%,-3%)}30%{transform:translate(3%,-1%)}
@@ -56,7 +56,6 @@ body::after{
   pointer-events:none;left:0;top:0;opacity:0;
   background:radial-gradient(circle,rgba(124,92,255,.55),rgba(67,224,208,.18) 55%,transparent 70%);
   transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),opacity .4s;
-  mix-blend-mode:screen;
 }
 .cursor-glow.big{width:70px;height:70px}
 @media (pointer:coarse){.cursor-glow{display:none}}
@@ -193,7 +192,7 @@ h3{font-size:1.25rem;font-weight:600}
 /* ============================================================
    INTRO — Scrollytelling lens (Apple-style)
    ============================================================ */
-.intro{height:250vh;position:relative}
+.intro{height:220vh;position:relative}
 .intro-sticky{
   position:sticky;top:0;height:100vh;overflow:hidden;
   display:grid;place-items:center;
@@ -393,7 +392,7 @@ h3{font-size:1.25rem;font-weight:600}
   opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility 0s .45s;
 }
 .lightbox.open{opacity:1;visibility:visible;transition:opacity .45s var(--ease)}
-.lightbox img{max-width:92vw;max-height:82vh;border-radius:12px;box-shadow:0 40px 120px -30px rgba(124,92,255,.35);transform:scale(.94);transition:transform .5s var(--ease)}
+.lightbox img{max-width:92vw;max-height:82vh;border-radius:12px;box-shadow:0 40px 120px -30px rgba(124,92,255,.35);transform:scale(.94);transition:transform .5s var(--ease),opacity .18s}
 .lightbox.open img{transform:scale(1)}
 .lightbox .lb-cap{position:absolute;bottom:3.5vh;left:50%;transform:translateX(-50%);font-family:var(--font-m);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mut)}
 .lightbox .lb-x{position:absolute;top:2rem;right:2rem;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:1.1rem;transition:all .3s}
@@ -430,12 +429,18 @@ h3{font-size:1.25rem;font-weight:600}
 /* ---------- Footer ---------- */
 .footer{border-top:1px solid var(--line);padding:5rem 0 2.5rem;background:var(--bg1);overflow:hidden}
 .footer .giant{
+  position:relative;display:inline-block;
   font-family:var(--font-d);font-weight:800;line-height:.9;letter-spacing:-.02em;
   font-size:clamp(3.4rem,14vw,11rem);
   -webkit-text-stroke:1px rgba(242,239,233,.28);color:transparent;
-  transition:all .6s var(--ease);user-select:none;
+  user-select:none;
 }
-.footer .giant:hover{color:transparent;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:0}
+.footer .giant::after{
+  content:attr(data-text);position:absolute;inset:0;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:0;opacity:0;transition:opacity .5s var(--ease);
+}
+.footer .giant:hover::after{opacity:1}
 .footer-grid{display:flex;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;margin:3rem 0 2.5rem}
 .footer h4{font-family:var(--font-m);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);margin-bottom:1rem}
 .footer ul{display:grid;gap:.5rem}
@@ -569,3 +574,21 @@ h3{font-size:1.25rem;font-weight:600}
 }
 .ba-tag-l{left:1rem;color:var(--mut)}
 .ba-tag-r{right:1rem;color:var(--cya)}
+
+
+/* ---------- Lightbox navigation ---------- */
+.lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  width:54px;height:54px;border-radius:50%;border:1px solid var(--line);
+  display:grid;place-items:center;font-size:1.5rem;color:var(--ink);
+  background:rgba(10,14,21,.5);backdrop-filter:blur(8px);
+  transition:border-color .3s,color .3s,transform .3s var(--ease);
+}
+.lb-prev{left:1.6rem}
+.lb-next{right:1.6rem}
+.lb-nav:hover{border-color:var(--cya);color:var(--cya);transform:translateY(-50%) scale(1.08)}
+.lb-hint{
+  position:absolute;top:2.4rem;left:50%;transform:translateX(-50%);
+  font-family:var(--font-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);
+}
+@media(max-width:700px){.lb-nav{width:44px;height:44px}.lb-prev{left:.7rem}.lb-next{right:.7rem}.lb-hint{display:none}}

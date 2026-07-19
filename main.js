@@ -87,7 +87,7 @@
     const sp = parseFloat(el.dataset.parallax) || .12;
     const r = el.parentElement.getBoundingClientRect();
     const v = (r.top + r.height/2 - innerHeight/2) * sp;
-    el.style.transform = `translateY(${v.toFixed(1)}px) scale(1.12)`;
+    el.style.transform = `translate3d(0,${v.toFixed(1)}px,0) scale(1.12)`;
   });
   if (!RM && plx.length){ addEventListener("scroll", () => requestAnimationFrame(parallax), { passive:true }); parallax(); }
 
@@ -216,20 +216,43 @@
     }));
   }
 
-  /* ---------- Lightbox ---------- */
+  /* ---------- Lightbox (mit Pfeil-/AD-Navigation) ---------- */
   const lb = $(".lightbox");
   if (lb){
     const lbImg = $("img", lb), lbCap = $(".lb-cap", lb);
-    const openLb = fig => {
+    let idx = 0;
+    const vis = () => $$(".g-item").filter(i => !i.classList.contains("hide"));
+    const setContent = fig => {
       lbImg.src = $("img", fig).src;
       lbCap.textContent = ($("figcaption", fig)?.textContent || "").trim();
+    };
+    const show = i => {
+      const list = vis(); if (!list.length) return;
+      idx = (i + list.length) % list.length;
+      lbImg.style.opacity = "0";
+      setTimeout(() => { setContent(list[idx]); lbImg.style.opacity = "1"; }, 150);
+    };
+    const openLb = fig => {
+      idx = Math.max(0, vis().indexOf(fig));
+      lbImg.style.opacity = "1";
+      setContent(fig);
       lb.classList.add("open");
       document.documentElement.style.overflow = "hidden";
     };
     const closeLb = () => { lb.classList.remove("open"); document.documentElement.style.overflow = ""; };
     $$(".g-item").forEach(f => f.addEventListener("click", () => openLb(f)));
-    lb.addEventListener("click", e => { if (e.target === lb || e.target.closest(".lb-x")) closeLb(); });
-    addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
+    lb.addEventListener("click", e => {
+      if (e.target.closest(".lb-next")) return show(idx + 1);
+      if (e.target.closest(".lb-prev")) return show(idx - 1);
+      if (e.target === lb || e.target.closest(".lb-x")) closeLb();
+    });
+    addEventListener("keydown", e => {
+      if (e.key === "Escape") return closeLb();
+      if (!lb.classList.contains("open")) return;
+      const k = e.key.toLowerCase();
+      if (e.key === "ArrowRight" || k === "d") show(idx + 1);
+      else if (e.key === "ArrowLeft" || k === "a") show(idx - 1);
+    });
   }
 
   /* ---------- Intro deco stars ---------- */
@@ -272,12 +295,12 @@
   addEventListener("wheel", e => {
     if (document.body.classList.contains("menu-open") || e.ctrlKey || e.defaultPrevented) return;
     e.preventDefault();
-    const d = (e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY) * 1.18;
+    const d = (e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY) * 1.35;
     target = Math.max(0, Math.min(max(), target + d));
     if (raf === null) raf = requestAnimationFrame(step);
   }, { passive:false });
   function step(){
-    const cur = scrollY, next = cur + (target - cur) * .18;
+    const cur = scrollY, next = cur + (target - cur) * .22;
     if (Math.abs(target - next) < .6){ scrollTo(0, target); raf = null; return; }
     scrollTo(0, next); raf = requestAnimationFrame(step);
   }
