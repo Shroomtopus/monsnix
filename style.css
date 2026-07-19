@@ -385,7 +385,7 @@ h3{font-size:1.25rem;font-weight:600}
   transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .4s;
 }
 .g-item:hover{border-color:rgba(124,92,255,.5)}
-.g-item img{width:100%;transition:transform 1.1s var(--ease)}
+.g-item img{width:100%;height:auto;display:block;transition:transform 1.1s var(--ease)}
 .g-item:hover img{transform:scale(1.06)}
 .g-item figcaption{
   position:absolute;left:0;right:0;bottom:0;padding:2.4rem 1.1rem .9rem;
@@ -555,9 +555,9 @@ h3{font-size:1.25rem;font-weight:600}
 @media(max-width:640px){.ba{aspect-ratio:4/4.4}}
 .ba img{width:100%;height:100%;object-fit:cover;pointer-events:none}
 .ba-after{position:absolute;inset:0}
-.ba-after img{filter:grayscale(.88) brightness(1.3) contrast(.9) sepia(.12) hue-rotate(170deg)}
+.ba-after img{filter:none}
 .ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x)) 0 0)}
-.ba-before img{filter:saturate(1.15) contrast(1.03)}
+.ba-before img{filter:none}
 .ba-handle{
   position:absolute;top:0;bottom:0;left:var(--x);width:2px;transform:translateX(-1px);
   background:var(--grad);box-shadow:0 0 20px rgba(124,92,255,.85);pointer-events:none;
@@ -726,3 +726,11 @@ h3{font-size:1.25rem;font-weight:600}
   transition:top .3s var(--ease);
 }
 .skip:focus{top:1rem}
+
+/* ===== v2.7 — Destinationen-Grid ===== */
+.dest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;margin-top:2.2rem}
+.dest-tile{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(242,239,233,.08);aspect-ratio:3/2;margin:0}
+.dest-tile img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform .5s ease}
+.dest-tile:hover img{transform:scale(1.09)}
+.dest-tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:.6rem .85rem;font-family:"Space Mono",monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);background:linear-gradient(transparent,rgba(6,8,11,.88))}
+@media (max-width:560px){.dest-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}.dest-tile figcaption{font-size:.5rem;padding:.45rem .6rem}}
