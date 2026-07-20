@@ -397,3 +397,19 @@
     });
   });
 })();
+
+/* ============ v2.9: Marquee lückenlos auf breiten Screens ============ */
+(() => {
+  const track = document.querySelector(".marquee-track");
+  if (!track || !track.children.length) return;
+  const fill = () => {
+    const base = track.children[0];
+    const w = base.getBoundingClientRect().width;
+    if (!w) return;
+    while (track.scrollWidth < innerWidth * 2 + w && track.children.length < 12)
+      track.appendChild(base.cloneNode(true));
+    if (track.children.length % 2) track.appendChild(base.cloneNode(true));
+  };
+  fill();
+  addEventListener("resize", () => { clearTimeout(track._t); track._t = setTimeout(fill, 300); }, { passive: true });
+})();
