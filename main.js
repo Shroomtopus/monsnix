@@ -310,6 +310,11 @@
     new IntersectionObserver(es => es.forEach(x => {
       if (x.isIntersecting) v.play().catch(()=>{}); else v.pause();
     }), { threshold:.05 }).observe(v);
+    // iOS/Safari: Autoplay kann blockiert sein — Tippen auf das Band startet das Video
+    const band = v.closest(".band") || v.parentElement;
+    if (band) band.addEventListener("click", () => {
+      if (v.paused) v.play().catch(()=>{}); else v.pause();
+    });
   });
 })();
 
