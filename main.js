@@ -106,6 +106,36 @@
     const grad  = $(".ring-grad", intro);
     const img   = $(".lens-aperture img", intro);
     const blades= $(".lens-blades", intro);
+    const ibFill = blades ? blades.querySelector(".ib-fill") : null;
+    const ibLines= blades ? blades.querySelector(".ib-lines") : null;
+    const IRIS_N = 10, IRIS_RB = 94;
+    const drawIris = (ap) => {
+      if (!ibFill) return;
+      const r = 13 + ap*70, phi = ap*44, rb = r*2.1;
+      const V = [];
+      for (let k = 0; k < IRIS_N; k++){
+        const a = (k*36 + phi) * Math.PI/180;
+        V.push([100 + r*Math.cos(a), 100 + r*Math.sin(a)]);
+      }
+      let hole = `M${V[0][0].toFixed(1)},${V[0][1].toFixed(1)}`;
+      for (let k = 1; k <= IRIS_N; k++){
+        const [x,y] = V[k % IRIS_N];
+        hole += ` A${rb.toFixed(1)},${rb.toFixed(1)} 0 0 0 ${x.toFixed(1)},${y.toFixed(1)}`;
+      }
+      hole += " Z";
+      const outer = `M100,${100-IRIS_RB} A${IRIS_RB},${IRIS_RB} 0 1 1 100,${100+IRIS_RB} A${IRIS_RB},${IRIS_RB} 0 1 1 100,${100-IRIS_RB} Z`;
+      ibFill.setAttribute("d", `${outer} ${hole}`);
+      if (ibLines){
+        let lines = "";
+        for (let k = 0; k < IRIS_N; k++){
+          const [x1,y1] = V[k];
+          const aw = (k*36 + phi + 34) * Math.PI/180;
+          const wx = 100 + (IRIS_RB-3)*Math.cos(aw), wy = 100 + (IRIS_RB-3)*Math.sin(aw);
+          lines += `<path d="M${x1.toFixed(1)},${y1.toFixed(1)} A${(rb*1.1).toFixed(1)},${(rb*1.1).toFixed(1)} 0 0 0 ${wx.toFixed(1)},${wy.toFixed(1)}"/>`;
+        }
+        ibLines.innerHTML = lines;
+      }
+    };
     const read  = $(".lens-read b", intro);
     const hint  = $(".intro-hint", intro);
     const chapters = $$(".intro-chapter", intro);
@@ -132,8 +162,7 @@
       const r = 9 + ap * 37;                      // 9% -> 46%
       img.style.clipPath = `circle(${r}% at 50% 50%)`;
       img.style.transform = `scale(${1.45 - ap*.45})`;
-      blades.style.opacity = String(clamp(.85 - ap*1.1, 0, .85));
-      blades.style.transform = `rotate(${ap*140}deg)`;
+      drawIris(ap);
 
       // finale: dim photo behind title
       const dim = clamp((p - .68) / .32, 0, 1);

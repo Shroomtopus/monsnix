@@ -239,11 +239,9 @@ h3{font-size:1.25rem;font-weight:600}
   width:100%;height:100%;object-fit:cover;transform:scale(1.45);will-change:transform,clip-path;
   clip-path:circle(9% at 50% 50%);
 }
-.lens-blades{
-  position:absolute;inset:0;border-radius:50%;pointer-events:none;
-  background:conic-gradient(from 0deg,rgba(6,8,11,.85) 0 30deg,transparent 30deg 60deg,rgba(6,8,11,.85) 60deg 90deg,transparent 90deg 120deg,rgba(6,8,11,.85) 120deg 150deg,transparent 150deg 180deg,rgba(6,8,11,.85) 180deg 210deg,transparent 210deg 240deg,rgba(6,8,11,.85) 240deg 270deg,transparent 270deg 300deg,rgba(6,8,11,.85) 300deg 330deg,transparent 330deg 360deg);
-  opacity:0;mix-blend-mode:multiply;will-change:transform,opacity;
-}
+.lens-blades{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.lens-blades .ib-fill{stroke:rgba(242,239,233,.2);stroke-width:.9}
+.lens-blades .ib-lines path{fill:none;stroke:rgba(242,239,233,.07);stroke-width:1}
 .lens-read{
   position:absolute;left:50%;bottom:-3.4rem;transform:translateX(-50%);
   font-family:var(--font-m);font-size:.72rem;letter-spacing:.3em;color:var(--mut);white-space:nowrap;
@@ -746,4 +744,11 @@ h3{font-size:1.25rem;font-weight:600}
   .n-node[aria-current] .n-lens{transform:translate(-50%,-50%) scale(1);border-color:var(--line);box-shadow:none}
   .n-node[aria-current] .n-lens img{clip-path:circle(12% at 50% 50%);transform:none;filter:none}
   .n-node[aria-current] .n-iris{opacity:.85;transform:none}
+}
+
+/* ===== v2.10 — Descender-Schutz auf Zeilenebene (Chromium background-clip:text) ===== */
+.grad-text{-webkit-box-decoration-break:clone;box-decoration-break:clone}
+h1:has(.grad-text),h2:has(.grad-text),h3:has(.grad-text),
+.big-line,.intro-chapter .big,.feat-body h3{
+  padding-bottom:.18em!important;margin-bottom:-.08em;overflow:visible;
 }
