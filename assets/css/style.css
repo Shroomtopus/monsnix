@@ -74,8 +74,10 @@ input:focus,textarea:focus{outline:1.5px solid var(--accent)}
 .site-nav a:hover{color:var(--ink)}
 .site-nav a[aria-current="page"]{color:var(--accent)}
 .theme-toggle{background:none;border:1px solid var(--line);border-radius:99px;width:30px;height:30px;
-  color:var(--muted);cursor:pointer;font-size:13px;line-height:1;padding:0;flex:none}
+  color:var(--muted);cursor:pointer;font-size:13px;line-height:1;padding:0;flex:none;
+  display:inline-flex;align-items:center;justify-content:center}
 .theme-toggle:hover{color:var(--ink);border-color:var(--muted)}
+.theme-toggle svg{display:block}
 
 /* ---------- Layout-Container ---------- */
 .wrap{max-width:1400px;margin:0 auto;padding-left:6vw;padding-right:6vw}
@@ -126,7 +128,11 @@ a.index-row:hover{background:var(--hover);color:var(--ink)}
   font-family:var(--mono);font-size:11px;color:var(--muted)}
 .site-footer a{color:var(--muted);text-decoration:none}
 .site-footer a:hover{color:var(--ink)}
-#yr{cursor:text}
+.foot-right{display:inline-flex;align-items:center;gap:6px}
+.portal-door{display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border:1px solid var(--line);border-radius:99px;
+  color:var(--muted);margin-left:8px}
+.portal-door:hover{color:var(--accent);border-color:var(--accent)}
 
 /* ---------- Artikel («Ausgabe») ---------- */
 .article-head{padding-top:64px;padding-bottom:34px;max-width:900px}
