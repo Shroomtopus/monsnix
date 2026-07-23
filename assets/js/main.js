@@ -34,7 +34,7 @@
 
   /* Tür zum privaten Portal (Schlüsselloch im Footer).
      PORTAL_URL wird gesetzt, sobald das Portal auf Cloudflare steht. */
-  var PORTAL_URL = '';
+  var PORTAL_URL = 'https://jarvis-dave.pages.dev';
   var door = document.querySelector('.portal-door');
   if (door) {
     if (PORTAL_URL) {
