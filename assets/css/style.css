@@ -1,0 +1,240 @@
+/* ============================================================
+   MONSNIX v3.0 — Editorial-Redesign
+   Reisejournal · Serif (Newsreader) + Mono (IBM Plex Mono)
+   Tag/Nacht über CSS Custom Properties · Radius 0 · Linien statt Schatten
+   ============================================================ */
+
+/* ---------- Fonts (selbst gehostet) ---------- */
+@font-face{font-family:'Newsreader';font-style:normal;font-display:swap;font-weight:200 800;
+  src:url(../fonts/newsreader-latin-opsz-normal.woff2) format('woff2-variations');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Newsreader';font-style:italic;font-display:swap;font-weight:200 800;
+  src:url(../fonts/newsreader-latin-opsz-italic.woff2) format('woff2-variations');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Newsreader';font-style:normal;font-display:swap;font-weight:200 800;
+  src:url(../fonts/newsreader-latin-ext-opsz-normal.woff2) format('woff2-variations');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Newsreader';font-style:italic;font-display:swap;font-weight:200 800;
+  src:url(../fonts/newsreader-latin-ext-opsz-italic.woff2) format('woff2-variations');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-display:swap;font-weight:400;
+  src:url(../fonts/ibm-plex-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-display:swap;font-weight:500;
+  src:url(../fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2')}
+
+/* ---------- Design-Token (Handoff-Tabelle, exakt) ---------- */
+:root{
+  --bg:#f9f7f2; --ink:#1b1a17; --card:#fff; --line:#ddd6c8; --line2:#eee8db;
+  --muted:#8b8578; --muted2:#a39b8a; --body:#55503f; --tile:#f4f0e7; --hover:#f1ede2;
+  --accent:#1b3f9e; --accentBg:#1b3f9e; --accentBgHover:#142f78;
+  --accentSoft:rgba(27,63,158,.08); --accentSoft2:rgba(27,63,158,.15); --accentFill:rgba(27,63,158,.07);
+  --ok:#2e7d4f; --warn:#b58a1e; --bad:#8a1e2d; --info:#3d7ea6;
+  --serif:'Newsreader',Georgia,serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+html[data-theme="dark"]{
+  --bg:#161512; --ink:#ece8dd; --card:#1e1c17; --line:#3b382e; --line2:#2b2822;
+  --muted:#a29a87; --muted2:#7f786a; --body:#c7c0af; --tile:#26231c; --hover:#201e18;
+  --accent:#8ea9ef; --accentBg:#3457b8; --accentBgHover:#4a6fd6;
+  --accentSoft:rgba(142,169,239,.12); --accentSoft2:rgba(142,169,239,.22); --accentFill:rgba(142,169,239,.08);
+  --ok:#6fce9a; --warn:#d9ad4a; --bad:#e08a94; --info:#7ab8d9;
+}
+
+/* ---------- Basis ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);
+  font-optical-sizing:auto;line-height:1.5;-webkit-font-smoothing:antialiased;
+  transition:background .25s ease,color .25s ease}
+img,svg,video{display:block;max-width:100%}
+a{color:var(--accent)}
+a:hover{color:var(--accentBgHover)}
+html[data-theme="dark"] a:hover{color:#b7c8f5}
+input,textarea,button,select{font-family:inherit;font-size:inherit}
+input:focus,textarea:focus{outline:1.5px solid var(--accent)}
+::selection{background:var(--accentSoft2)}
+
+/* Utility-Typo */
+.mono{font-family:var(--mono)}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accentBg);color:#f9f7f2;
+  padding:10px 16px;font-family:var(--mono);font-size:12px;z-index:99}
+.skip-link:focus{left:0}
+
+/* ---------- Header / Nav ---------- */
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:24px 6vw;border-bottom:1px solid var(--ink)}
+.brand{text-decoration:none;color:var(--ink);font-family:var(--mono);font-size:12px;
+  letter-spacing:.28em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.brand:hover{color:var(--accent)}
+.site-nav{display:flex;align-items:center;gap:30px;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.1em;text-transform:uppercase}
+.site-nav a{text-decoration:none;color:var(--muted)}
+.site-nav a:hover{color:var(--ink)}
+.site-nav a[aria-current="page"]{color:var(--accent)}
+.theme-toggle{background:none;border:1px solid var(--line);border-radius:99px;width:30px;height:30px;
+  color:var(--muted);cursor:pointer;font-size:13px;line-height:1;padding:0;flex:none}
+.theme-toggle:hover{color:var(--ink);border-color:var(--muted)}
+
+/* ---------- Layout-Container ---------- */
+.wrap{max-width:1400px;margin:0 auto;padding-left:6vw;padding-right:6vw}
+
+/* ---------- Hero (Startseite) ---------- */
+.hero{padding-top:76px;padding-bottom:64px;display:grid;grid-template-columns:1.2fr .8fr;
+  gap:56px;align-items:end}
+.hero-copy{display:flex;flex-direction:column;gap:22px}
+.hero h1{margin:0;font-size:clamp(44px,5vw,68px);line-height:1.05;font-weight:400;text-wrap:balance}
+.hero .lead{margin:0;font-size:18px;line-height:1.65;color:var(--body);max-width:46ch}
+.hero figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.figcap{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.02em}
+
+/* Foto-Platzhalter (werden durch echte Fotos ersetzt) */
+.ph{display:flex;align-items:center;justify-content:center;font-family:var(--mono);
+  font-size:10px;letter-spacing:.14em;color:#f9f7f2;text-transform:uppercase}
+
+/* ---------- Index-Liste ---------- */
+.index-head{display:flex;align-items:baseline;justify-content:space-between;
+  border-top:2px solid var(--ink);padding-top:20px}
+.index-head h2{margin:0;font-family:var(--mono);font-size:11.5px;letter-spacing:.24em;
+  text-transform:uppercase;font-weight:500}
+.index-count{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.index-row{display:grid;grid-template-columns:70px 140px 1fr auto;gap:26px;align-items:baseline;
+  padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+a.index-row:hover{background:var(--hover);color:var(--ink)}
+.index-row:last-of-type{border-bottom:0}
+.ix-no{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.ix-date{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.ix-title{font-size:25px;font-weight:500;line-height:1.25}
+.ix-sub{font-size:14.5px;color:var(--body);font-style:italic}
+.ix-read{font-family:var(--mono);font-size:11.5px;color:var(--accent);white-space:nowrap}
+.pill{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--accent);color:var(--accent);padding:5px 12px;border-radius:99px;white-space:nowrap}
+.pill-live{border-color:var(--ok);color:var(--ok)}
+.index-row.is-future .ix-title,.index-row.is-future .ix-sub{color:var(--muted)}
+
+/* ---------- Archiv-Teaser ---------- */
+.archive-teaser{margin-top:40px;border-top:2px solid var(--ink);padding-top:30px;padding-bottom:44px;
+  display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.archive-teaser .line2{font-size:22px;font-style:italic;margin-top:4px}
+.thumbs{display:flex;gap:10px;flex-wrap:wrap}
+.thumbs .th{width:96px;height:70px;object-fit:cover}
+
+/* ---------- Footer ---------- */
+.site-footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:18px 6vw;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:11px;color:var(--muted)}
+.site-footer a{color:var(--muted);text-decoration:none}
+.site-footer a:hover{color:var(--ink)}
+#yr{cursor:text}
+
+/* ---------- Artikel («Ausgabe») ---------- */
+.article-head{padding-top:64px;padding-bottom:34px;max-width:900px}
+.article-meta{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.article-meta .no{color:var(--accent)}
+.article-head h1{margin:18px 0 0;font-size:clamp(38px,4.6vw,60px);line-height:1.08;font-weight:400;text-wrap:balance}
+.article-head .standfirst{margin:18px 0 0;font-size:19px;line-height:1.6;color:var(--body);font-style:italic;max-width:52ch}
+
+/* Datenleiste */
+.datastrip{border-top:2px solid var(--ink);border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin-top:44px}
+.datastrip>div{padding:14px 18px 16px;border-right:1px solid var(--line2)}
+.datastrip>div:last-child{border-right:0}
+.datastrip .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.datastrip .v{font-family:var(--mono);font-size:16px;margin-top:4px}
+
+.prose{max-width:680px;padding-top:44px;padding-bottom:20px;font-size:17.5px;line-height:1.75;color:var(--body)}
+.prose p{margin:0 0 1.5em}
+.prose h2{font-size:27px;font-weight:500;color:var(--ink);margin:2em 0 .7em;line-height:1.2}
+.prose figure{margin:2.4em 0;display:flex;flex-direction:column;gap:10px}
+.prose figure.wide{width:min(900px,100%);}
+.prose blockquote{margin:2.2em 0;padding:0 0 0 22px;border-left:2px solid var(--accent);
+  font-style:italic;font-size:20px;line-height:1.55;color:var(--ink)}
+.dropcap::first-letter{font-size:3.4em;float:left;line-height:.82;padding:.06em .12em 0 0;color:var(--ink)}
+
+.article-nav{border-top:2px solid var(--ink);margin-top:30px;padding-top:26px;padding-bottom:56px;
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:12px}
+.article-nav a{text-decoration:none}
+
+/* ---------- Galerie («Verzeichnis der Abbildungen») ---------- */
+.page-head{padding-top:64px;padding-bottom:40px}
+.page-head h1{margin:14px 0 0;font-size:clamp(38px,4.6vw,58px);line-height:1.08;font-weight:400}
+.page-head .sub{margin:16px 0 0;font-size:18px;line-height:1.6;color:var(--body);max-width:52ch}
+.gal{border-top:2px solid var(--ink);padding-top:34px;padding-bottom:60px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:34px 26px}
+.gal figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.gal .ph,.gal img{width:100%;height:280px;object-fit:cover}
+.gal figure.tall .ph,.gal figure.tall img{height:380px}
+
+/* ---------- Über mich ---------- */
+.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start;
+  border-top:2px solid var(--ink);padding-top:44px;padding-bottom:60px}
+.about figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.about .ph{height:440px}
+.about .prose{padding-top:0;max-width:none}
+.facts{border-top:1px solid var(--line);margin-top:8px}
+.facts>div{display:flex;justify-content:space-between;gap:20px;padding:12px 0;
+  border-bottom:1px solid var(--line2);font-size:14.5px}
+.facts .k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.facts .v{font-family:var(--mono);font-size:13px;text-align:right}
+
+/* ---------- Kontakt ---------- */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;
+  border-top:2px solid var(--ink);padding-top:44px;padding-bottom:64px}
+.contact .note{font-size:16.5px;line-height:1.7;color:var(--body)}
+.form{display:flex;flex-direction:column;gap:16px}
+.form label{display:flex;flex-direction:column;gap:7px}
+.form .lab{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.form input,.form textarea{background:var(--card);border:1px solid var(--line);border-radius:0;
+  padding:13px 15px;color:var(--ink);font-size:15px;font-family:var(--serif)}
+.form textarea{min-height:170px;resize:vertical;line-height:1.6}
+.btn{display:inline-block;background:var(--accentBg);color:#f9f7f2;border:none;border-radius:0;
+  padding:14px 26px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;text-align:center}
+.btn:hover{background:var(--accentBgHover);color:#f9f7f2}
+.btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.btn-ghost:hover{background:var(--accentSoft);color:var(--accent)}
+
+/* ---------- 404 ---------- */
+.err{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:18px;padding:60px 6vw}
+.err .code{font-family:var(--mono);font-size:13px;letter-spacing:.28em;color:var(--accent)}
+.err h1{margin:0;font-size:clamp(36px,5vw,56px);font-weight:400}
+
+/* ---------- Reveal (dezent) ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+}
+
+/* ============================================================
+   Mobile — konsequent, nach Lehrgeld v2.x
+   ============================================================ */
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;gap:36px;padding-top:52px;padding-bottom:48px}
+  .hero figure .ph,.hero figure img{height:240px}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .about,.contact{grid-template-columns:1fr;gap:36px}
+  .about .ph{height:340px}
+}
+@media (max-width:760px){
+  .site-header{padding:16px 5vw;flex-wrap:wrap}
+  .site-nav{gap:16px;font-size:10.5px;flex-wrap:wrap}
+  .wrap{padding-left:5vw;padding-right:5vw}
+  .hero h1{font-size:clamp(34px,10vw,44px)}
+  .hero .lead{font-size:16.5px}
+  /* Index-Zeilen stapeln: Nr+Datum oben, Titel darunter, Aktion unten */
+  .index-row{grid-template-columns:auto 1fr;grid-template-rows:auto auto auto;
+    gap:6px 18px;padding:20px 0;align-items:center}
+  .ix-no{grid-column:1;grid-row:1}
+  .ix-date{grid-column:2;grid-row:1}
+  .ix-main{grid-column:1 / -1;grid-row:2}
+  .ix-title{font-size:20px}
+  .ix-action{grid-column:1 / -1;grid-row:3;justify-self:start}
+  .archive-teaser{flex-direction:column;align-items:flex-start}
+  .gal{grid-template-columns:1fr}
+  .gal .ph,.gal img,.gal figure.tall .ph,.gal figure.tall img{height:260px}
+  .datastrip>div{padding:12px 14px}
+  .prose{font-size:16.5px}
+  .site-footer{flex-direction:column;gap:8px}
+}
