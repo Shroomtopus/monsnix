@@ -1,136 +1,65 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kontakt — Monsnix</title>
-<meta name="description" content="Schreib mir — Fragen, Feedback oder gemeinsame Projekte.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#06080b">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="canonical" href="https://monsnix.com/kontakt.html">
-<link rel="alternate" type="application/rss+xml" title="Monsnix Reiseberichte" href="https://monsnix.com/feed.xml">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Monsnix">
-<meta property="og:title" content="Kontakt — Monsnix">
-<meta property="og:description" content="Schreib mir — Fragen zu Reisen, Feedback zum Journal oder Interesse an einem Bild.">
-<meta property="og:url" content="https://monsnix.com/kontakt.html">
-<meta property="og:image" content="https://monsnix.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale" content="de_CH">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kontakt — Monsnix">
-<meta name="twitter:description" content="Schreib mir — Fragen zu Reisen, Feedback zum Journal oder Interesse an einem Bild.">
-<meta name="twitter:image" content="https://monsnix.com/og-image.png">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="Schreib mir — Fragen zu Reisen, Fotos oder einfach so. Kontaktformular des Monsnix-Reisejournals.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<div class="curtain" aria-hidden="true"><span class="curtain-brand">Monsnix</span></div>
-<a class="skip" href="#main">Zum Inhalt springen</a>
-
-<div class="progress" aria-hidden="true"><span></span></div>
-
-<header class="top">
-  <a class="brand" href="home.html"><span class="pulse"></span><em>Dave</em></a>
-  <span class="tag">Reisejournal · Fotografie</span>
+<header class="site-header">
+  <a class="brand" href="home.html">Monsnix — Dave</a>
+  <nav class="site-nav" aria-label="Hauptnavigation">
+    <a href="home.html">Journal</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ueber-mich.html">Über mich</a>
+    <a href="kontakt.html" aria-current="page">Kontakt</a>
+    <button class="theme-toggle" title="Tag / Nacht umschalten" aria-label="Tag- oder Nachtmodus umschalten">☾</button>
+  </nav>
 </header>
 
-<button class="fab" aria-label="Menü öffnen" aria-expanded="false" aria-controls="neuro-menu">
-  <span class="bars"><i></i><i></i></span>
-</button>
-
-<nav class="neuro" id="neuro-menu" aria-label="Hauptnavigation">
-  <div class="hexgrid">
-    <span class="hex hx-deco hx-faint" style="left:12px;top:148px"></span>
-    <span class="hex hx-deco" style="left:129px;top:216px"></span>
-    <span class="hex hx-deco hx-faint" style="left:480px;top:148px"></span>
-    <span class="hex hx-deco hx-faint" style="left:363px;top:352px"></span>
-    <div class="hex hx-core" style="left:246px;top:148px"><span class="hx-brand">MONS<b>NIX</b></span></div>
-    <a class="hex hx-link" style="left:129px;top:80px" href="home.html"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9.5 7 L13.5 13 L16 9.5 L21 19 Z"/><circle cx="18.2" cy="5.4" r="1.6"/></svg><span class="hx-name">Start</span></span></a>
-    <a class="hex hx-link" style="left:246px;top:12px" href="reisen.html"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 L13.4 13.4 L8.5 15.5 L10.6 10.6 Z"/></svg><span class="hx-name">Reisen</span></span></a>
-    <a class="hex hx-link" style="left:363px;top:80px" href="galerie.html"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.4" cy="10" r="1.7"/><path d="M5 17 L10.5 12 L14 15 L16.6 12.8 L21 17"/></svg><span class="hx-name">Galerie</span></span></a>
-    <a class="hex hx-link" style="left:363px;top:216px" href="ueber-mich.html"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="3.6"/><path d="M4.5 20 C5.6 15.8 8.5 14 12 14 C15.5 14 18.4 15.8 19.5 20"/></svg><span class="hx-name">Über mich</span></span></a>
-    <a class="hex hx-link" style="left:246px;top:284px" href="kontakt.html" aria-current="page"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.6 6.6 L12 13 L20.4 6.6"/></svg><span class="hx-name">Kontakt</span></span></a>
-  </div>
-  <span class="n-foot">Monsnix · Synapse Nav</span>
-</nav>
-
 <main id="main">
-  <section class="page-hero">
-    <div class="ph-media"><img src="dest-paris.svg" width="1920" height="1280" alt="" data-parallax="0.1"></div>
-    <div class="container">
-      <span class="kicker">Kontakt</span>
-      <h1>Schreib mir</h1>
-      
-    </div>
-  </section>
+  <div class="wrap">
 
-  <section class="section">
-    <div class="container contact-grid">
-      <div class="reveal">
-        <span class="kicker">Kontakt</span>
-        <h2>Ich freue mich auf <span class="grad-text">Deine Nachricht</span></h2>
-        <p class="lead">Fragen zu einer Reise, Feedback zum Journal oder Interesse an einem Bild? Melde Dich gern.</p>
-        <ul class="contact-list">
-          <li><span class="ico">◎</span><span>Schweiz</span></li>
-          <li><span class="ico">◷</span><span>Antwort meist innert 1–2 Tagen</span></li>
-        </ul>
+    <header class="page-head">
+      <div class="kicker">Kontakt</div>
+      <h1>Schreib <em>mir.</em></h1>
+      <p class="sub">Fragen zu einer Route, zu einem Foto — oder einfach ein Gruss von deiner eigenen Reise. Ich lese alles, antworte ehrlich, und deine Adresse landet in keinem Verteiler.</p>
+    </header>
+
+    <section class="contact">
+      <div class="note">
+        <div class="label" style="margin-bottom:14px">Direkt</div>
+        <p>Das Formular geht direkt in mein Postfach. Magst du lieber soziale Netze, findest du mich hier:</p>
+        <p style="margin-top:18px"><a href="#" rel="me">Instagram</a> · <a href="#" rel="me">YouTube</a></p>
       </div>
-      <div class="reveal reveal-d1">
-        <p class="form-ok" hidden>✓ Danke — Deine Nachricht ist unterwegs! Ich melde mich innert 1–2 Tagen.</p>
-        <form class="contact-form" action="https://formsubmit.co/frehner28@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Neue Nachricht über monsnix.com">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://monsnix.com/kontakt.html?sent=1">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <div class="form-row">
-            <label>Name<input type="text" name="name" required autocomplete="name"></label>
-            <label>E-Mail<input type="email" name="email" required autocomplete="email"></label>
-          </div>
-          <label>Betreff<input type="text" name="betreff"></label>
-          <label>Nachricht<textarea name="nachricht" required></textarea></label>
-          <div><button class="btn btn-primary" type="submit">Nachricht senden <span class="arrow">→</span></button></div>
-          <p style="font-size:.8rem;color:var(--mut)">Deine Nachricht landet direkt in meinem Postfach.</p>
-        </form>
-      </div>
-    </div>
-  </section>
+      <form class="form" action="https://formsubmit.co/frehner28@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Neue Nachricht über monsnix.com">
+        <input type="hidden" name="_next" value="https://monsnix.com/kontakt.html">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label><span class="lab">Name</span>
+          <input type="text" name="name" required autocomplete="name"></label>
+        <label><span class="lab">E-Mail</span>
+          <input type="email" name="email" required autocomplete="email"></label>
+        <label><span class="lab">Nachricht</span>
+          <textarea name="message" required></textarea></label>
+        <button class="btn" type="submit">Absenden</button>
+      </form>
+    </section>
+
+  </div>
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <div class="giant" data-text="MONSNIX" aria-hidden="true">MONSNIX</div>
-    <div class="footer-grid">
-      <div style="max-width:22rem">
-        <a class="brand" href="home.html"><span class="pulse"></span><em>Dave</em></a>
-        <p style="color:var(--mut);margin-top:1rem;font-size:.95rem">Reisejournal von Dave. Geschichten von unterwegs — und die Bilder dazu.</p>
-      </div>
-      <div>
-        <h4>Seiten</h4>
-        <ul>
-          <li><a href="reisen.html">Reiseberichte</a></li>
-          <li><a href="galerie.html">Galerie</a></li>
-          <li><a href="ueber-mich.html">Über mich</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontaktformular</a></li>
-          <li><a href="#">Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="fine"><span>© <b data-year>2026</b> Dave · Schweiz</span><span>Design «Synapse»</span></div>
-  </div>
+<footer class="site-footer">
+  <span>© <span id="yr" title="">2026</span> Dave · Monsnix</span>
+  <span><a href="kontakt.html">Kontakt</a> · <a href="ueber-mich.html">Impressum</a> · <a href="ueber-mich.html">Datenschutz</a></span>
 </footer>
 
-<script src="main.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

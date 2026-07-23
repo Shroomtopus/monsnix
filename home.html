@@ -1,288 +1,103 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Monsnix — Reisejournal von Dave</title>
-<meta name="description" content="Reisejournal von Dave: Geschichten von unterwegs, Sommer wie Winter — und die Bilder dazu.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#06080b">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Monsnix — Ein Reisejournal</title>
+<meta name="description" content="Monsnix ist das Reisejournal von Dave. Du reist mit — Bericht für Bericht: Gardasee, Barcelona, im Herbst Korea & Japan.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="canonical" href="https://monsnix.com/home.html">
-<link rel="alternate" type="application/rss+xml" title="Monsnix Reiseberichte" href="https://monsnix.com/feed.xml">
+<meta property="og:title" content="Monsnix — Ein Reisejournal">
+<meta property="og:description" content="Du reist mit — Bericht für Bericht. Reisejournal und Fotografien von Dave.">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Monsnix">
-<meta property="og:title" content="Monsnix — Reisejournal von Dave">
-<meta property="og:description" content="Reisejournal von Dave: Geschichten von unterwegs, Sommer wie Winter — und die Bilder dazu.">
 <meta property="og:url" content="https://monsnix.com/home.html">
-<meta property="og:image" content="https://monsnix.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale" content="de_CH">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Monsnix — Reisejournal von Dave">
-<meta name="twitter:description" content="Reisejournal von Dave: Geschichten von unterwegs, Sommer wie Winter — und die Bilder dazu.">
-<meta name="twitter:image" content="https://monsnix.com/og-image.png">
-<link rel="stylesheet" href="style.css">
+<script src="assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<div class="curtain" aria-hidden="true"><span class="curtain-brand">Monsnix</span></div>
-<a class="skip" href="#main">Zum Inhalt springen</a>
-
-<div class="progress" aria-hidden="true"><span></span></div>
-
-<header class="top">
-  <a class="brand" href="home.html"><span class="pulse"></span><em>Dave</em></a>
-  <span class="tag">Reisejournal · Fotografie</span>
+<header class="site-header">
+  <a class="brand" href="home.html">Monsnix — Dave</a>
+  <nav class="site-nav" aria-label="Hauptnavigation">
+    <a href="home.html" aria-current="page">Journal</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ueber-mich.html">Über mich</a>
+    <a href="kontakt.html">Kontakt</a>
+    <button class="theme-toggle" title="Tag / Nacht umschalten" aria-label="Tag- oder Nachtmodus umschalten">☾</button>
+  </nav>
 </header>
 
-<button class="fab" aria-label="Menü öffnen" aria-expanded="false" aria-controls="neuro-menu">
-  <span class="bars"><i></i><i></i></span>
-</button>
-
-<nav class="neuro" id="neuro-menu" aria-label="Hauptnavigation">
-  <div class="hexgrid">
-    <span class="hex hx-deco hx-faint" style="left:12px;top:148px"></span>
-    <span class="hex hx-deco" style="left:129px;top:216px"></span>
-    <span class="hex hx-deco hx-faint" style="left:480px;top:148px"></span>
-    <span class="hex hx-deco hx-faint" style="left:363px;top:352px"></span>
-    <div class="hex hx-core" style="left:246px;top:148px"><span class="hx-brand">MONS<b>NIX</b></span></div>
-    <a class="hex hx-link" style="left:129px;top:80px" href="home.html" aria-current="page"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9.5 7 L13.5 13 L16 9.5 L21 19 Z"/><circle cx="18.2" cy="5.4" r="1.6"/></svg><span class="hx-name">Start</span></span></a>
-    <a class="hex hx-link" style="left:246px;top:12px" href="reisen.html"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 L13.4 13.4 L8.5 15.5 L10.6 10.6 Z"/></svg><span class="hx-name">Reisen</span></span></a>
-    <a class="hex hx-link" style="left:363px;top:80px" href="galerie.html"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.4" cy="10" r="1.7"/><path d="M5 17 L10.5 12 L14 15 L16.6 12.8 L21 17"/></svg><span class="hx-name">Galerie</span></span></a>
-    <a class="hex hx-link" style="left:363px;top:216px" href="ueber-mich.html"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="3.6"/><path d="M4.5 20 C5.6 15.8 8.5 14 12 14 C15.5 14 18.4 15.8 19.5 20"/></svg><span class="hx-name">Über mich</span></span></a>
-    <a class="hex hx-link" style="left:246px;top:284px" href="kontakt.html"><span class="hx-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.6 6.6 L12 13 L20.4 6.6"/></svg><span class="hx-name">Kontakt</span></span></a>
-  </div>
-  <span class="n-foot">Monsnix · Synapse Nav</span>
-</nav>
-
 <main id="main">
+  <div class="wrap">
 
-  <!-- ======= INTRO: Scrollytelling-Objektiv ======= -->
-  <section class="intro" aria-label="Intro">
-    <div class="intro-sticky">
-      <div class="intro-stars" aria-hidden="true"></div>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="kicker">Ein Reisejournal · Seit 2025</div>
+        <h1>Du reist mit —<br><em>Bericht für Bericht.</em></h1>
+        <p class="lead">Ich bin Dave. Hier schreibe ich auf, was unterwegs hängen bleibt — zuletzt am Gardasee, im Herbst sechs Wochen Korea &amp; Japan. Die Fotos dazu findest du im Archiv.</p>
+      </div>
+      <figure>
+        <div class="ph" style="height:320px;background:linear-gradient(155deg,#b9c2d4,#7686a5)">Foto: Gardasee</div>
+        <figcaption class="figcap">Abb. 1 — Gardasee, Mai 2026, 06:12 Uhr</figcaption>
+      </figure>
+    </section>
 
-      <div class="lens" aria-hidden="true">
-        <div class="lens-glow"></div>
-        <div class="ring ring-ticks"></div>
-        <div class="ring ring-grad"></div>
-        <div class="ring ring-thin"></div>
-        <div class="lens-aperture">
-          <img src="dest-schweiz-winter.svg" width="1920" height="1280" alt="Stilisierte Winter-Bergwelt">
-          <svg class="lens-blades" viewBox="0 0 200 200" aria-hidden="true">
-            <defs><radialGradient id="ibmet" cx="0.38" cy="0.34" r="1">
-              <stop offset="0" stop-color="#161b26"/><stop offset="1" stop-color="#0b0f17"/>
-            </radialGradient></defs>
-            <path class="ib-fill" fill="url(#ibmet)" fill-rule="evenodd"/>
-            <g class="ib-lines"></g>
-          </svg>
-        </div>
-        <div class="lens-read">Blende <b>ƒ/16</b> · Monsnix Optik 01</div>
+    <!-- Index -->
+    <section aria-label="Alle Berichte">
+      <div class="index-head">
+        <h2>Index — Alle Berichte</h2>
+        <span class="index-count">03 Einträge</span>
       </div>
 
-      <div class="intro-chapter ch-1">
-        <div class="big">Sehen<span class="grad-text">.</span></div>
-        <p>Die Welt durch ein Objektiv — Licht, Farbe, ein Augenblick Geduld.</p>
-      </div>
-      <div class="intro-chapter ch-2">
-        <div class="big">Reisen<span class="grad-text">.</span></div>
-        <p>Orte, Menschen, Umwege. Die besten Geschichten liegen abseits der Route.</p>
-      </div>
-      <div class="intro-chapter ch-3">
-        <div class="big">Festhalten<span class="grad-text">.</span></div>
-        <p>Ein Bild bleibt, wenn der Moment längst weitergezogen ist.</p>
-      </div>
-      <div class="intro-chapter ch-4">
-        <div class="big">Mons<span class="grad-text">nix</span></div>
-        <p>Fotografie- &amp; Reisejournal von Dave</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="reisen.html">Reiseberichte lesen <span class="arrow">→</span></a>
-          <a class="btn btn-ghost" href="galerie.html">Zur Galerie</a>
-        </div>
+      <div class="index-row is-future">
+        <span class="ix-no">Nº 03</span>
+        <span class="ix-date">Sept. 2026</span>
+        <span class="ix-main"><span class="ix-title">Korea &amp; Japan — die grosse Herbstreise</span><br>
+          <span class="ix-sub">Demnächst — du liest hier live mit, sobald es losgeht.</span></span>
+        <span class="ix-action"><span class="pill">Geplant</span></span>
       </div>
 
-      <div class="intro-hint">Scrollen</div>
-    </div>
-  </section>
+      <a class="index-row" href="reise-artikel.html">
+        <span class="ix-no">Nº 02</span>
+        <span class="ix-date">Mai 2026</span>
+        <span class="ix-main"><span class="ix-title">Stille Morgen am Gardasee</span><br>
+          <span class="ix-sub">Warum sich das Aufstehen um sechs jedes Mal gelohnt hat.</span></span>
+        <span class="ix-action"><span class="ix-read">Lesen →</span></span>
+      </a>
 
-  <!-- ======= Marquee ======= -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Fotografie <i class="s">✦</i> <span class="o">Reisen</span> <i class="s">✦</i> Momente <i class="s">✦</i> <span class="o">Unterwegs</span> <i class="s">✦</i> Geschichten <i class="s">✦</i> <span class="o">Abenteuer</span> <i class="s">✦</i></span>
-      <span>Fotografie <i class="s">✦</i> <span class="o">Reisen</span> <i class="s">✦</i> Momente <i class="s">✦</i> <span class="o">Unterwegs</span> <i class="s">✦</i> Geschichten <i class="s">✦</i> <span class="o">Abenteuer</span> <i class="s">✦</i></span>
-    </div>
+      <a class="index-row" href="reise-artikel.html">
+        <span class="ix-no">Nº 01</span>
+        <span class="ix-date">Juni 2025</span>
+        <span class="ix-main"><span class="ix-title">Barcelona zu Fuss: Gaudí, Gassen, Gegenlicht</span><br>
+          <span class="ix-sub">Vier Tage Stadt und ein Paar durchgelaufene Schuhe.</span></span>
+        <span class="ix-action"><span class="ix-read">Lesen →</span></span>
+      </a>
+    </section>
+
+    <!-- Archiv-Teaser -->
+    <section class="archive-teaser">
+      <div>
+        <div class="label">Aus dem Archiv</div>
+        <div class="line2">Fotografien von unterwegs — <a href="galerie.html">zur Galerie</a></div>
+      </div>
+      <div class="thumbs" aria-hidden="true">
+        <div class="th ph" style="background:linear-gradient(135deg,#a4b2cc,#5f6f92)"></div>
+        <div class="th ph" style="background:linear-gradient(135deg,#c2b49e,#8a7a5e)"></div>
+        <div class="th ph" style="background:linear-gradient(135deg,#9aab9c,#5f7264)"></div>
+        <div class="th ph" style="background:linear-gradient(135deg,#b0a2be,#71618a)"></div>
+      </div>
+    </section>
+
   </div>
-
-  <!-- ======= Featured Bericht ======= -->
-  <section class="section" style="padding-bottom:0">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="kicker">Neuster Bericht</span>
-          <h2>Zuletzt <span class="grad-text">unterwegs</span></h2>
-        </div>
-      </div>
-      <article class="feat reveal">
-        <div class="feat-media"><img src="dest-kolumbien.svg" width="1920" height="1280" alt="Stilisiertes Artwork — Karibikküste Kolumbiens" loading="lazy"></div>
-        <div class="feat-body">
-          <div class="chips">
-            <span class="chip chip-loc">◎ Kolumbien</span>
-            <span class="chip">Juni 2026</span>
-            <span class="chip">≈ 6 Min</span>
-            <span class="chip">Beispiel</span>
-          </div>
-          <h3>Grüne Wildnis: Unterwegs in Kolumbien</h3>
-          <p>Platzhalter-Teaser: Hier steht die Einleitung Deines neusten Reiseberichts — zwei, drei Sätze, die mitten in die Geschichte ziehen.</p>
-          <span class="card-link">Ganzen Bericht lesen →</span>
-        </div>
-        <a class="overlay-link" href="reise-artikel.html" aria-label="Neusten Bericht lesen"></a>
-      </article>
-    </div>
-  </section>
-
-  <!-- ======= Neueste Reiseberichte ======= -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="kicker">Unterwegs</span>
-          <h2>Weitere <span class="grad-text">Berichte</span></h2>
-        </div>
-        <a class="btn btn-ghost" href="reisen.html">Alle Berichte <span class="arrow">→</span></a>
-      </div>
-      <div class="card-grid">
-        <article class="card reveal reveal-d1" data-tilt>
-          <div class="card-media"><span class="card-tag">◎ Schweiz</span><img src="dest-schweiz.svg" width="1920" height="1280" alt="Stilisierte Bergsilhouette — Schweiz" loading="lazy"></div>
-          <div class="card-body">
-            <span class="card-meta">Mai 2026 · ≈ 4 Min · Beispiel</span>
-            <h3>Stille Morgen am See</h3>
-            <p>Platzhalter-Teaser: Kurzer Anriss des Berichts — die ganze Karte ist klickbar.</p>
-            <span class="card-link">Weiterlesen →</span>
-          </div>
-          <a class="overlay-link" href="reise-artikel.html" aria-label="Stille Morgen lesen"></a>
-        </article>
-        <article class="card reveal reveal-d2" data-tilt>
-          <div class="card-media"><span class="card-tag">◎ Thailand</span><img src="dest-thailand.svg" width="1920" height="1280" alt="Stilisierte Inselwelt — Thailand" loading="lazy"></div>
-          <div class="card-body">
-            <span class="card-meta">April 2026 · ≈ 5 Min · Beispiel</span>
-            <h3>Inseln der Andamanensee</h3>
-            <p>Platzhalter-Teaser: Begegnungen unterwegs — die Menschen hinter den Orten.</p>
-            <span class="card-link">Weiterlesen →</span>
-          </div>
-          <a class="overlay-link" href="reise-artikel.html" aria-label="Inseln der Andamanensee lesen"></a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= Vorher / Nachher ======= -->
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="kicker">Gleicher Ort, zwei Gesichter</span>
-          <h2>Sommer ⁄ <span class="grad-text">Winter</span></h2>
-        </div>
-        <p class="lead" style="max-width:24rem">Der Winter friert die Natur ein. Zieh den Regler — derselbe Ort, im Schneemantel. (Platzhalter, bald mit echtem Foto-Paar.)</p>
-      </div>
-      <div class="ba reveal" data-ba>
-        <div class="ba-after"><img src="dest-schweiz-winter.svg" width="1920" height="1280" alt="Winter — derselbe Ort im Schneemantel"></div>
-        <div class="ba-before"><img src="dest-schweiz.svg" width="1920" height="1280" alt="Sommer — voller Leben"></div>
-        <div class="ba-handle"><span class="ba-knob">⇆</span></div>
-        <span class="ba-tag ba-tag-l">Sommer</span>
-        <span class="ba-tag ba-tag-r">Winter ❄</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= Video-Band (bewegte Bilder) ======= -->
-  <section class="band" aria-label="Bewegte Momente">
-    <video autoplay muted loop playsinline preload="none" poster="dest-norwegen.jpg" data-parallax="0.06">
-      <source src="hero.mp4" type="video/mp4">
-    </video>
-    <div class="band-inner reveal">
-      <span class="kicker" style="justify-content:center">In Bewegung</span>
-      <div class="big-line">Momente, die <span class="grad-text">weiterlaufen</span>.</div>
-    </div>
-  </section>
-
-  <!-- ======= Galerie-Teaser ======= -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="kicker">Portfolio</span>
-          <h2>Aus der <span class="grad-text">Galerie</span></h2>
-        </div>
-        <a class="btn btn-ghost" href="galerie.html">Ganze Galerie <span class="arrow">→</span></a>
-      </div>
-    </div>
-    <div class="container reveal">
-      <div class="strip">
-        <figure><img src="dest-mauritius.svg" width="1920" height="1280" alt="Mauritius — stilisiertes Artwork" loading="lazy"><figcaption>Mauritius</figcaption></figure>
-        <figure><img src="dest-mexiko.svg" width="1920" height="1280" alt="Mexiko — stilisiertes Artwork" loading="lazy"><figcaption>Mexiko</figcaption></figure>
-        <figure><img src="dest-gardasee.svg" width="1920" height="1280" alt="Gardasee — stilisiertes Artwork" loading="lazy"><figcaption>Gardasee</figcaption></figure>
-        <figure><img src="dest-marseille.svg" width="1920" height="1280" alt="Marseille — stilisiertes Artwork" loading="lazy"><figcaption>Marseille</figcaption></figure>
-        <figure><img src="dest-norwegen.svg" width="1920" height="1280" alt="Norwegen — stilisiertes Artwork" loading="lazy"><figcaption>Norwegen</figcaption></figure>
-        <figure><img src="dest-berlin.svg" width="1920" height="1280" alt="Berlin — stilisiertes Artwork" loading="lazy"><figcaption>Berlin</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= Über-mich-Teaser ======= -->
-  <section class="section" style="background:var(--bg1);border-block:1px solid var(--line)">
-    <div class="container split">
-      <div class="split-media reveal"><img src="dest-santo-domingo.svg" width="1920" height="1280" alt="Stilisierte Karibikküste — Santo Domingo" data-parallax="0.08" loading="lazy"></div>
-      <div class="reveal reveal-d1">
-        <span class="kicker">Hinter der Kamera</span>
-        <h2>Fotograf aus <span class="grad-text">Leidenschaft</span>, Reisender aus Neugier</h2>
-        <p class="lead">Platzhalter: In zwei, drei Sätzen, wer Du bist und warum es diese Seite gibt.</p>
-        <div class="chips" style="margin-top:2rem">
-          <span class="chip chip-loc">◎ Schweiz</span>
-          <span class="chip">Sommer ⁄ Winter</span>
-          <span class="chip">Kamera immer dabei</span>
-        </div>
-        <p style="margin-top:2rem"><a class="btn btn-primary" href="ueber-mich.html">Mehr über mich <span class="arrow">→</span></a></p>
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <div class="giant" data-text="MONSNIX" aria-hidden="true">MONSNIX</div>
-    <div class="footer-grid">
-      <div style="max-width:22rem">
-        <a class="brand" href="home.html"><span class="pulse"></span><em>Dave</em></a>
-        <p style="color:var(--mut);margin-top:1rem;font-size:.95rem">Reisejournal von Dave. Geschichten von unterwegs — und die Bilder dazu.</p>
-      </div>
-      <div>
-        <h4>Seiten</h4>
-        <ul>
-          <li><a href="reisen.html">Reiseberichte</a></li>
-          <li><a href="galerie.html">Galerie</a></li>
-          <li><a href="ueber-mich.html">Über mich</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontaktformular</a></li>
-          <li><a href="#">Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="fine"><span>© <b data-year>2026</b> Dave · Schweiz</span><span>Design «Synapse»</span></div>
-  </div>
+<footer class="site-footer">
+  <span>© <span id="yr" title="">2026</span> Dave · Monsnix</span>
+  <span><a href="kontakt.html">Kontakt</a> · <a href="ueber-mich.html">Impressum</a> · <a href="ueber-mich.html">Datenschutz</a></span>
 </footer>
 
-<script src="main.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

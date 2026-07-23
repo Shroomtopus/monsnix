@@ -1,76 +1,27 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Monsnix — Fotografie &amp; Reisen</title>
-<meta name="description" content="Die neue Foto- und Reise-Seite von Dave entsteht. Bald hier.">
-<meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#06080b">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="canonical" href="https://monsnix.com/">
-<link rel="alternate" type="application/rss+xml" title="Monsnix Reiseberichte" href="https://monsnix.com/feed.xml">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Monsnix">
-<meta property="og:title" content="Monsnix — Reisejournal von Dave">
-<meta property="og:description" content="Die neue Reise- und Foto-Seite von Dave entsteht. Bald hier.">
-<meta property="og:url" content="https://monsnix.com/">
-<meta property="og:image" content="https://monsnix.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale" content="de_CH">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Monsnix — Reisejournal von Dave">
-<meta name="twitter:description" content="Die neue Reise- und Foto-Seite von Dave entsteht. Bald hier.">
-<meta name="twitter:image" content="https://monsnix.com/og-image.png">
-<style>
-  :root{--bg:#06080b;--ink:#f2efe9;--mut:#8b94a7;--vio:#7c5cff;--cya:#43e0d0;
-    --grad:linear-gradient(115deg,#7c5cff,#43e0d0)}
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;
-    min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:2rem;
-    overflow:hidden;position:relative;-webkit-font-smoothing:antialiased}
-  body::before{content:"";position:absolute;inset:-30%;z-index:0;
-    background:radial-gradient(40% 40% at 25% 30%,rgba(124,92,255,.20),transparent 70%),
-      radial-gradient(45% 45% at 75% 70%,rgba(67,224,208,.16),transparent 70%);
-    filter:blur(10px);animation:drift 18s ease-in-out infinite alternate}
-  @keyframes drift{from{transform:translate3d(-2%,-1%,0) scale(1)}to{transform:translate3d(2%,2%,0) scale(1.08)}}
-  body::after{content:"";position:fixed;inset:-50%;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
-  .wrap{position:relative;z-index:1;text-align:center;max-width:44rem}
-  .brand{font-family:"Syne",sans-serif;font-weight:700;font-size:1.4rem;margin-bottom:2.5rem;
-    display:inline-flex;align-items:center;gap:.7rem}
-  .brand .dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--grad);
-    box-shadow:0 0 14px rgba(124,92,255,.9);animation:pul 2.6s ease-in-out infinite}
-  @keyframes pul{0%,100%{transform:scale(1)}50%{transform:scale(.55)}}
-  .brand em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .badge{display:inline-flex;align-items:center;gap:.6rem;font-family:"Space Mono",monospace;
-    font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);
-    border:1px solid rgba(242,239,233,.14);padding:.55rem 1.1rem;border-radius:999px;margin-bottom:2.2rem}
-  h1{font-family:"Syne",sans-serif;font-weight:800;line-height:1;letter-spacing:-.01em;
-    font-size:clamp(2.8rem,9vw,5.6rem);margin-bottom:1.4rem}
-  h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  p.lead{color:var(--mut);font-size:clamp(1rem,2.4vw,1.15rem);line-height:1.65;max-width:33rem;margin:0 auto 2.4rem}
-  .contact{display:inline-block;color:var(--ink);text-decoration:none;font-size:.95rem;
-    border-bottom:1px solid rgba(242,239,233,.35);padding-bottom:2px;transition:all .25s}
-  .contact:hover{color:var(--cya);border-color:var(--cya)}
-  .foot{margin-top:3rem;font-family:"Space Mono",monospace;font-size:.6rem;letter-spacing:.26em;
-    text-transform:uppercase;color:rgba(139,148,167,.6)}
-</style>
+<title>Monsnix — Ein Reisejournal</title>
+<meta name="description" content="Monsnix — ein Reisejournal. Bald liest du hier mit, Bericht für Bericht.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <main class="wrap">
-    <div class="brand"><span class="dot"></span><em>Dave</em></div><br>
-    <span class="badge">Fotografie &amp; Reisejournal</span>
-    <h1>Bald <span class="g">hier</span>.</h1>
-    <p class="lead">Meine neue Seite für Fotografie und Reisen ist im Aufbau —
-      Geschichten, Bilder und Eindrücke von unterwegs. Schau bald wieder vorbei.</p>
-    <div class="foot">© Dave · Schweiz · Monsnix</div>
-  </main>
+
+<main class="err" style="min-height:100vh">
+  <div class="code">Monsnix · Ein Reisejournal</div>
+  <h1>Du reist bald mit —<br><em>Bericht für Bericht.</em></h1>
+  <p style="color:var(--body);max-width:46ch;margin:0">Hier entsteht ein Reisejournal im Editorial-Stil: Gardasee, Barcelona — und im Herbst sechs Wochen Korea &amp; Japan, live.</p>
+  <div class="datastrip" style="max-width:520px;width:100%">
+    <div><div class="k">Status</div><div class="v">Im Aufbau</div></div>
+    <div><div class="k">Berichte</div><div class="v">02 + 1 geplant</div></div>
+    <div><div class="k">Start</div><div class="v">2026</div></div>
+  </div>
+</main>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
